@@ -151,6 +151,15 @@ section h2 {
     transform: translateY(-50%); */
 }
 
+.item-content a i.fa {
+    position: absolute;
+    font-size: 64px;
+    top: 50%;
+    left: 50%;
+    color: #fff;
+    transform: translate(-50%, -50%);
+}
+
 .item-1 {
     width: 96%;
 }
