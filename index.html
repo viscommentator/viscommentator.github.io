@@ -150,7 +150,7 @@
             border-radius: 10px;
         }
 
-        .item-content img {
+        .item-content img, .item-content video {
             /* max-height: 100%;
             max-width: 100%;
             height: auto;
@@ -159,6 +159,7 @@
             top: 50%;
             transform: translateY(-50%);
         }
+
 
         .item-1 {
             width: 96%;
@@ -186,6 +187,14 @@
             margin-left: -10%;
         }
 
+        #empty_tip {
+            display: none;
+            text-align: center;
+            margin-top: 5rem;
+            font-size: 1.5rem;
+
+        }
+
         .filter-selector-group {
             float: right;
             margin-bottom: 0.5rem;
@@ -204,6 +213,30 @@
             font-size: 0.8rem;
             text-transform: uppercase;
             text-decoration: none;
+        }
+
+        #video_pagination {
+            float: right;
+        }
+
+        .pagination-button {
+            border: none;
+            background: none;
+            height: 2.5rem;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            letter-spacing: 0.2rem;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            text-decoration: none;
+        }
+        .pagination-button:hover {
+            color: #09ceff;
+        }
+        .pagination-button.active {
+            color: #09abff;
         }
 
         table {
@@ -286,9 +319,11 @@
             transform: translateX(-50%);
             font-weight: bold;
         }
+        .clearfix {
+            clear: both;
+        }
     </style>
-    <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
     <link rel="stylesheet" href="styles/tomorrow-night.css">
@@ -337,17 +372,17 @@
         <section id="section2" class="section1">
             <h2>Corpus</h2>
             <div class="filter-selector-group">
-                <select class="filter-select" id="video_sports"></select>
-                <select class="filter-select" id="video_source"></select>
-                <select class="filter-select" id="narrative_pattern"></select>
+                <select class="filter-select" id="video_sports" onchange="filterCorpus()"></select>
+                <select class="filter-select" id="video_source" onchange="filterCorpus()"></select>
+                <select class="filter-select" id="video_source_type" onchange="filterCorpus()"></select>
             </div>
             <div id="examples_good" class="gallary">
             </div>
-            <div id="gallary_pagination" class="pagination">
-                <span>previous</span>
-                <span>1</span>
-                <span>2</span>
+            <div id="empty_tip">
+                No Video
             </div>
+            <div id="video_pagination" class="pagination"></div>
+            <div class="clearfix"></div>
         </section>
         <hr />
 
@@ -365,6 +400,23 @@
     </div>
 
     <script>
+        let currentPage = 0
+        let pageNumber = 1
+        const pageSize = 12
+        let videoNumber = 0
+        let videoData = []
+        let selectedVideo = []
+
+        function initVideoData() {
+            $.getJSON("data/cacheSampled-1.json", function (data) {
+                videoData = data
+                filterCorpus()
+            })
+        }
+        initVideoData()
+
+
+
         function insertExampleImage() {
             const section = document.querySelector('#examples > #examples_good')
             for (let i = 1; i < 13; ++i) {
@@ -421,23 +473,11 @@
         // reference
         convertReference()
 
-        // corpus
-        function generateCorpus() {
-            const section = document.querySelector('#examples_good')
-            for (let i = 1; i < 13; ++i) {
-                section.insertAdjacentHTML('beforeend', `
-                <div class="item">
-                    <div class="item-content">
-                    <a data-fancybox="gallery" href="figs/logo.jpg">
-                    <img src="figs/logo.jpg" alt='missing' /> </a>
-                    </div>
-                </div>
-                `)
-            }
-
-            const sportsOption = ["All Sports", "Basketball", "Soccer", "Football", "Badminton", "Table Tennis", "Tennis"]
-            const sourceOption = ["All Sources", "TV", "Team", "Fan", "Demo", "League", "Other Organization"]
-            const narrativePatternOption = ["All Narrative Pattern", "Linear", "FlashForward", "FlashBack", "TimeFork", "ZigZag", "Grouped"]
+        // selector options
+        function generateSelector() {
+            const sportsOption = ["All Sports", "Badminton", "BasketBall", "Football", "Table Tennis", "Tennis", "American Football", "Volleyball"]
+            const sourceOption = ["All Sources", "CCTV", "ShuttleFlash", "陈金", "Boston Celtics", "ClippersCourtvision", "SecondSpectrum", "Tencent", "FIFA", "Vizrt", "ITTF", "Sports analysis", "TennisGate", "ESPN", "NFL"]
+            const sourceTypeOption = ["All Source Types", "tv", "team", "fan", "demo", "league", "other organization"]
 
             // select for video sports
             const sportsSelect = document.querySelector('#video_sports')
@@ -456,14 +496,105 @@
             sourceSelect.innerHTML = optionsForSource
 
             // select for video source
-            const narrativeSelect = document.querySelector('#narrative_pattern')
-            let optionsForNarrative = ""
-            for(let narrative of narrativePatternOption) {
-                optionsForNarrative += `<option value="${narrative}">${narrative}</option>`
+            const sourceTypeSelect = document.querySelector('#video_source_type')
+            let optionsForSourceType = ""
+            for(let sourceType of sourceTypeOption) {
+                optionsForSourceType += `<option value="${sourceType}">${sourceType}</option>`
             }
-            narrativeSelect.innerHTML = optionsForNarrative
+            sourceTypeSelect.innerHTML = optionsForSourceType
         }
-        generateCorpus()
+        generateSelector()
+
+        // corpus
+        function filterCorpus() {
+            const selectedSport = document.querySelector('#video_sports').value
+            const selectedSource = document.querySelector('#video_source').value
+            const selectedSourceType = document.querySelector('#video_source_type').value
+
+            console.log(selectedSport, selectedSource, selectedSourceType)
+            // do the filter
+            selectedVideo = []
+            videoData.forEach((video, i) => {
+                if (selectedSport === "All Sports" || selectedSport === video.sport) {
+                    if (selectedSource === "All Sources" || selectedSource === video.source) {
+                        if (selectedSourceType === "All Source Types" || selectedSourceType === video.sourceType) {
+                            selectedVideo.push(video)
+                        }
+                    }
+                }
+            })
+            console.log(selectedVideo)
+
+            if (selectedVideo.length ===0 ) {
+                $("#examples_good").css("display", "none")
+                $("#empty_tip").css("display", "block")
+            }
+            else {
+                $("#examples_good").css("display", "")
+                $("#empty_tip").css("display", "none")
+                const section = document.querySelector('#examples_good')
+                section.innerHTML = ""
+                videoNumber = selectedVideo.length
+                currentPage = 0
+                pageNumber = parseInt((videoNumber + pageSize - 1) / pageSize)
+
+                // video list
+                for (let i = 0; i < pageSize; i++) {
+                    section.insertAdjacentHTML('beforeend', `
+                <div class="item">
+                    <div class="item-content">
+                    <a data-fancybox="gallery" href="http://vegaar.hkustvis.org/videos/${selectedVideo[i].name}">
+                    <video src="http://vegaar.hkustvis.org/videos/${selectedVideo[i].name}" alt='missing' />
+                     </a>
+                    </div>
+                </div>
+                `)
+                }
+
+                // pagination
+                const pagination = document.querySelector('#video_pagination')
+                let paginationHtml = ""
+                paginationHtml += `<button class="pagination-button" onclick="lastPage()"><</button>`
+                for (let i = 1; i < pageNumber + 1; i++) {
+                    let className = "pagination-button"
+                    if (currentPage === i-1)
+                        className += " active"
+                    paginationHtml+=`<button class="${className}" onclick="gotoPage(${i})">${i}</button>`
+                }
+                paginationHtml += `<button class="pagination-button" onclick="nextPage()">></button>`
+                pagination.innerHTML = paginationHtml
+            }
+        }
+
+        function lastPage() {
+            gotoPage(currentPage-1)
+        }
+
+        function nextPage() {
+            gotoPage(currentPage+1)
+        }
+
+        function gotoPage(pageIndex) {
+            const section = document.querySelector('#examples_good')
+            section.innerHTML = ""
+            videoNumber = selectedVideo.length
+            currentPage = pageIndex - 1
+            pageNumber = (videoNumber + pageSize - 1) / pageSize
+
+            // video list
+            for (let i = currentPage * pageSize; i < (currentPage + 1) * pageSize; i++) {
+                section.insertAdjacentHTML('beforeend', `
+                <div class="item">
+                    <div class="item-content">
+                    <a data-fancybox="gallery" href="http://vegaar.hkustvis.org/videos/${selectedVideo[i].name}">
+                    <video src="http://vegaar.hkustvis.org/videos/${selectedVideo[i].name}" alt='missing' />
+                     </a>
+                    </div>
+                </div>
+                `)
+            }
+            $(`.pagination-button:nth-child(${currentPage + 1})`).attr("class", "pagination-button active")
+        }
 
     </script>
 </body>
