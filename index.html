@@ -511,7 +511,6 @@
             const selectedSource = document.querySelector('#video_source').value
             const selectedSourceType = document.querySelector('#video_source_type').value
 
-            console.log(selectedSport, selectedSource, selectedSourceType)
             // do the filter
             selectedVideo = []
             videoData.forEach((video, i) => {
@@ -523,7 +522,6 @@
                     }
                 }
             })
-            console.log(selectedVideo)
 
             if (selectedVideo.length ===0 ) {
                 $("#examples_good").css("display", "none")
@@ -535,7 +533,7 @@
                 const section = document.querySelector('#examples_good')
                 section.innerHTML = ""
                 videoNumber = selectedVideo.length
-                currentPage = 0
+                currentPage = 1
                 pageNumber = parseInt((videoNumber + pageSize - 1) / pageSize)
 
                 // video list
@@ -554,15 +552,17 @@
                 // pagination
                 const pagination = document.querySelector('#video_pagination')
                 let paginationHtml = ""
-                paginationHtml += `<button class="pagination-button" onclick="lastPage()"><</button>`
+                paginationHtml += `<button class="pagination-button" onclick="lastPage()" disabled><</button>`
                 for (let i = 1; i < pageNumber + 1; i++) {
                     let className = "pagination-button"
-                    if (currentPage === i-1)
+                    if (currentPage === i)
                         className += " active"
                     paginationHtml+=`<button class="${className}" onclick="gotoPage(${i})">${i}</button>`
                 }
-                paginationHtml += `<button class="pagination-button" onclick="nextPage()">></button>`
-                pagination.innerHTML = paginationHtml
+                paginationHtml += `<button id="next_page" class="pagination-button" onclick="nextPage()">></button>`
+				pagination.innerHTML = paginationHtml
+                if (pageNumber === 1)
+                    $("#next_page").attr("disabled", true)
             }
         }
 
@@ -571,18 +571,21 @@
         }
 
         function nextPage() {
-            gotoPage(currentPage+1)
+            gotoPage(currentPage + 1)
         }
 
         function gotoPage(pageIndex) {
             const section = document.querySelector('#examples_good')
             section.innerHTML = ""
-            videoNumber = selectedVideo.length
-            currentPage = pageIndex - 1
-            pageNumber = (videoNumber + pageSize - 1) / pageSize
+            currentPage = pageIndex
 
             // video list
-            for (let i = currentPage * pageSize; i < (currentPage + 1) * pageSize; i++) {
+			let maxNumber
+			if (currentPage * pageSize >= videoNumber)
+                maxNumber = videoNumber
+			else
+			    maxNumber = currentPage * pageSize
+            for (let i = (currentPage - 1) * pageSize; i < maxNumber; i++) {
                 section.insertAdjacentHTML('beforeend', `
                 <div class="item">
                     <div class="item-content">
@@ -593,7 +596,24 @@
                 </div>
                 `)
             }
-            $(`.pagination-button:nth-child(${currentPage + 1})`).attr("class", "pagination-button active")
+
+            // pagination
+            const pagination = document.querySelector('#video_pagination')
+            let paginationHtml = ""
+            paginationHtml += `<button id="last_page" class="pagination-button" onclick="lastPage()"><</button>`
+                for (let i = 1; i < pageNumber + 1; i++) {
+                    let className = "pagination-button"
+                    if (currentPage === i)
+                        className += " active"
+                    paginationHtml+=`<button class="${className}" onclick="gotoPage(${i})">${i}</button>`
+                }
+                paginationHtml += `<button id="next_page" class="pagination-button" onclick="nextPage()">></button>`
+                pagination.innerHTML = paginationHtml
+
+			if (currentPage === 1)
+			    $("#last_page").attr("disabled", true)
+            if (currentPage === pageNumber)
+                $("#next_page").attr("disabled", true)
         }
 
     </script>
