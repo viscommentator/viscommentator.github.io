@@ -1706,8 +1706,22 @@
         <section id="section4" class="section1">
             <h2>Machine Learning Library and Code</h2>
             <h3>1. BodyPix2</h3>
-            <h3>2. Fast-RCNN + XGBoost</h3>
+            <h3>2. Event Recognition</h3>
+            <p>
+                We use ST-GCN 
+                <cite><a href="#stgcn">[1]</a></cite>
+                 to recongize player event while adopt HMM 
+                <cite><a href="#stroke-HMM">[2]</a></cite>
+                <cite><a href="#ball-HMM">[3]</a></cite>
+                 to capture ball event.
+            </p>
+            
             <h3>3. Causality</h3>
+            <p>
+                We use FGES (Fast Greedy Equivalence Search)
+                <cite><a href="#FGES">[4]</a></cite>
+                 to extract the recommended data that used for future purpose.
+            </p>
         </section>
 
         <!---------------------------------------------------------------->
@@ -1721,8 +1735,19 @@
 
         <hr />
         <section id="references" class="references">
-            <h2 style="text-align:left;">Reference</h2>
-
+            <h2 style="text-align:left;">References</h2>
+            <p id="stgcn">
+                [1] Yan S, Xiong Y, Lin D. Spatial temporal graph convolutional networks for skeleton-based action recognition[J]. arXiv preprint arXiv:1801.07455, 2018.
+            </p>
+            <p id="stroke-HMM">
+                [2] Petkovic M, Jonker W, Zivkovic Z. Recognizing Strokes in Tennis Videos using Hidden Markov Models[C]//VIIP. 2001: 512-516.
+            </p>
+            <p id="ball-HMM">
+                [3] Almajai I, Kittler J, de Campos T, et al. Ball event recognition using HMM for automatic tennis annotation[C]//2010 IEEE International Conference on Image Processing. IEEE, 2010: 1509-1512.
+            </p>
+            <p id="FGES">
+                [4] Fast Greedy Equivalence Search (FGES) Algorithm for Discrete Variables. Available at: https://www.ccd.pitt.edu/wiki/index.php/Fast_Greedy_Equivalence_Search_(FGES)_Algorithm_for_Discrete_Variables (Accessed: 10 September 2020)
+            </p>
         </section>
     </div>
 
