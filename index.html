@@ -370,7 +370,7 @@
             font-style:normal">DesignSpaceLarge</h1>
             <div id="table-wrapper" style="width:635pt">
                 <div id="table-scroll">
-            <table border="0" cellpadding="0" cellspacing="0" width="836" style="border-collapse:
+            <table id="DesignSpaceLarge" border="0" cellpadding="0" cellspacing="0" width="836" style="border-collapse:
                 collapse;table-layout:fixed;width:625pt">
                 <colgroup><col width="98" style="mso-width-source:userset;mso-width-alt:3301;width:74pt">
                 <col width="67" style="width:50pt">
@@ -1698,15 +1698,12 @@
             </div>
             </div>
 
-
-
-
         </section>
         <hr />
         <section id="section4" class="section1">
-            <h2>Machine Learning Library and Code</h2>
-            <h3>1. BodyPix2</h3>
-            <h3>2. Event Recognition</h3>
+            <h2 id="MLLibraryCode">Machine Learning Library and Code</h2>
+            <h3 id="BodyPix2">1. BodyPix2</h3>
+            <h3 id="EventRecognition">2. Event Recognition</h3>
             <p>
                 We use ST-GCN 
                 <cite><a href="#stgcn">[1]</a></cite>
@@ -1716,12 +1713,118 @@
                  to capture ball event.
             </p>
             
-            <h3>3. Causality</h3>
+            <h3 id="Causality">3. Causality</h3>
             <p>
                 We use FGES (Fast Greedy Equivalence Search)
                 <cite><a href="#FGES">[4]</a></cite>
                  to extract the recommended data that used for future purpose.
+                The toolkit can be found in <cite><a href="#causalTool">[5]</a></cite>.
             </p>
+            <h4 id="CasualInput">3.1. Input</h4>
+            <p>
+                To generate a causal graph, we group the table tennis data into a table, where each row represents a rally and each column represents a technique. Each cell records the frequence of corresponding technique used in that rally.
+            </p>
+            <h5 align="center">Input Table Sample</h5>
+            <table id="CasualInputTable" style="width:50%;">
+                <thead>
+                    <tr>
+                        <th>Topspin</th>
+                        <th>Reverse</th>
+                        <th>Push</th>
+                        <th>Pendulum</th>
+                        <th>Flick</th>
+                        <th>Lob</th>
+                        <th>Twist</th>
+                        <th>Block</th>
+                        <th>Short</th>
+                        <th>Others</th>
+                        <th>Attack</th>
+                        <th>Smash</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>2</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>1</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>1</td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>1</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>2</td>
+                        <td>1</td>
+                        <td>0</td>
+                        <td>1</td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>2</td>
+                        <td>1</td>
+                        <td>0</td>
+                        <td>1</td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>2</td>
+                        <td>1</td>
+                        <td>0</td>
+                        <td>1</td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>1</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>1</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>2</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td colspan=12>…</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h4 id="CasualOutput">3.2. Output</h4>
+            <figure style="text-align: center;
+            width: 60%;
+            margin: 0 auto 20px auto;">
+                <img src="figs/CasualOutput.svg" alt='missing' />
+            </figure>
         </section>
 
         <!---------------------------------------------------------------->
@@ -1747,6 +1850,9 @@
             </p>
             <p id="FGES">
                 [4] Fast Greedy Equivalence Search (FGES) Algorithm for Discrete Variables. Available at: https://www.ccd.pitt.edu/wiki/index.php/Fast_Greedy_Equivalence_Search_(FGES)_Algorithm_for_Discrete_Variables (Accessed: 10 September 2020)
+            </p>
+            <p id="casualTool">
+                [5] py-causal. Available at: https://github.com/bd2kccd/py-causal (Accessed: 10 September 2020)
             </p>
         </section>
     </div>
