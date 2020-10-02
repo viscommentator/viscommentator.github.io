@@ -1705,24 +1705,47 @@
             <h3 id="BodyPix2">1. BodyPix2</h3>
             <h3 id="EventRecognition">2. Event Recognition</h3>
             <p>
-                We use ST-GCN 
+                We use spatial temporal graph ConvNet (ST-GCN)
                 <cite><a href="#stgcn">[1]</a></cite>
-                 to recongize player event while adopt HMM 
-                <cite><a href="#stroke-HMM">[2]</a></cite>
-                <cite><a href="#ball-HMM">[3]</a></cite>
-                 to capture ball event.
+                 to recongize player event such as the technique a player used in one stroke.
+                <h4 id="EventRecognitionIO">2.1. Input & output</h4>
+                <p>
+                    According to the pipeline porposed in ST-GCN, we first collect the table tennis video with high resolution (1080p) and frame rate (50fps). Then we use the pose estimation algorithm to retrieve the body joints from each frame, and formulate the spatial graph where the node is the joint and edge is the connection between joints of a body and joints between adjacent frames. Finally the spatial graph is used as the input for the ST-GCN.
+                </p>
+                <p>
+                    The output of the ST-GCN is the standard SoftMax classifier that identifies the graph into corresponding technique category.
+                </p>
+                <h4 id="EventRecognitionInput">2.2. Training</h4>
+                <p>
+                    We kept the the network structure the same as it introduced in the paper 
+                    <cite><a href="#causalTool">[1]</a></cite>.
+                    To gather the training data, we collected thousands of strokes from hundreds of world tournament games happened during 2016-2018. These data are manually identified from videos and formulated into structured json file. A sample file fragment is as follows:
+                </p>
+                <div class="row" style="text-align: center;
+                width: 90%;
+                margin: 0 auto 20px auto;">
+                    <div class="column" align="center">
+                        <img src="figs/json1.jpg" alt="missing" style="width:75%">
+                    </div>
+                    <div class="column" align="center">
+                        <img src="figs/json2.jpg" alt="missing" style="width:75%">
+                    </div>
+                </div>
+                <p>
+                    To train the ST-GCN, we kept the number of records (video fragments) in each technique equally to make sure the scale of joints from different categories are almost the same. To this end, we first further devided the records of each technique into two categories: the player face to the screen and the player back to the screen. Then, we grouped the techniques with little records into "other" category, and simply discarded extra records to maintain consistent record numbers for each category. Finally, we got seven techniques (i.e. topspin, reverse, push, short, pendulum, attack, others), 14 categories with 4375 records each. 
+                </p>
             </p>
             
             <h3 id="Causality">3. Causality</h3>
             <p>
                 We use FGES (Fast Greedy Equivalence Search)
-                <cite><a href="#FGES">[4]</a></cite>
+                <cite><a href="#FGES">[2]</a></cite>
                  to extract the recommended data that used for future purpose.
-                The toolkit can be found in <cite><a href="#causalTool">[5]</a></cite>.
+                The toolkit can be found in <cite><a href="#causalTool">[3]</a></cite>.
             </p>
             <h4 id="CasualInput">3.1. Input</h4>
             <p>
-                To generate a causal graph, we group the table tennis data into a table, where each row represents a rally and each column represents a technique. Each cell records the frequence of corresponding technique used in that rally.
+                To generate a causal graph, we group the table tennis data into a table, where each row represents a rally and each column represents a technique. Each cell records the frequency of corresponding technique used in that rally.
             </p>
             <h5 align="center">Input Table Sample</h5>
             <table id="CasualInputTable" style="width:50%;">
@@ -1842,17 +1865,11 @@
             <p id="stgcn">
                 [1] Yan S, Xiong Y, Lin D. Spatial temporal graph convolutional networks for skeleton-based action recognition[J]. arXiv preprint arXiv:1801.07455, 2018.
             </p>
-            <p id="stroke-HMM">
-                [2] Petkovic M, Jonker W, Zivkovic Z. Recognizing Strokes in Tennis Videos using Hidden Markov Models[C]//VIIP. 2001: 512-516.
-            </p>
-            <p id="ball-HMM">
-                [3] Almajai I, Kittler J, de Campos T, et al. Ball event recognition using HMM for automatic tennis annotation[C]//2010 IEEE International Conference on Image Processing. IEEE, 2010: 1509-1512.
-            </p>
             <p id="FGES">
-                [4] Fast Greedy Equivalence Search (FGES) Algorithm for Discrete Variables. Available at: https://www.ccd.pitt.edu/wiki/index.php/Fast_Greedy_Equivalence_Search_(FGES)_Algorithm_for_Discrete_Variables (Accessed: 10 September 2020)
+                [2] Fast Greedy Equivalence Search (FGES) Algorithm for Discrete Variables. Available at: https://www.ccd.pitt.edu/wiki/index.php/Fast_Greedy_Equivalence_Search_(FGES)_Algorithm_for_Discrete_Variables (Accessed: 10 September 2020)
             </p>
             <p id="casualTool">
-                [5] py-causal. Available at: https://github.com/bd2kccd/py-causal (Accessed: 10 September 2020)
+                [3] py-causal. Available at: https://github.com/bd2kccd/py-causal (Accessed: 10 September 2020)
             </p>
         </section>
     </div>
