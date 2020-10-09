@@ -7,15 +7,29 @@
     <title>VisCommentator</title>
 
     <link rel="stylesheet" href="./styles//style.css" />
-    <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
 
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css"
     />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css"
+      integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css"
+    />
     <link rel="stylesheet" href="styles/tomorrow-night.css" />
+
+    <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
     <script src="js/highlight.pack.js"></script>
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS_CHTML"
@@ -25,7 +39,7 @@
 
   <body>
     <div class="teaser">
-      <img src="./figs/bg4_low.jpg" />
+      <img src="./figs/logo.jpg" />
       <div class="mask"></div>
       <div class="teaser-content">
         <h1>Augmenting Sports Videos with VisCommentator</h1>
@@ -63,25 +77,42 @@
       </section>
 
       <hr />
+
       <section id="examples" class="examples">
         <h2>Examples</h2>
-          <!-- <figure
+        <!-- <figure
           style="text-align: center; width: 60%; margin: 0 auto 20px auto"
         >
           <img src="figs/41_architecture.png" alt="missing" />
         <figcaption>The complete architecture of our model that can parse both global and local information simultaneously.</figcaption> 
         </figure>-->
 
-        <video src="videos/demo0.mp4"
-        controls></video> 
+        <video src="videos/demo0.mp4" controls></video>
+        <div id="examples_demo" class="gallary"></div>
+      </section>
 
-
-        <div id="examples_demo" class="gallary">
-
+      <hr />
+      <section id="section2" class="section1">
+        <h2>Corpus</h2>
+        <div class="filter-selector-group">
+          <select class="filter-select" id="video_sports"></select>
+          <select class="filter-select" id="video_source"></select>
+          <select class="filter-select" id="narrative_pattern"></select>
         </div>
-
+        <div id="examples_good" class="gallary"></div>
+        <div id="gallary_pagination" class="pagination">
+          <span>previous</span>
+          <span>1</span>
+          <span>2</span>
+        </div>
       </section>
       <hr />
+
+      <hr />
+      <section id="paper" class="paper">
+        <h2>Paper</h2>
+        <div class="gallary"></div>
+      </section>
 
       <hr />
       <section id="paper" class="paper">
@@ -110,6 +141,7 @@
                     </a>
                     </div>
                 </div>
+<<<<<<< HEAD
                 <video
           width="1280"
           height="640"
@@ -156,10 +188,81 @@
       // highlight code
       hljs.initHighlightingOnLoad();
 
-      insertExampleImage()
+      insertExampleImage();
 
       // reference
       convertReference();
+
+      // corpus
+      function generateCorpus() {
+        const section = document.querySelector("#examples_good");
+        for (let i = 1; i < 13; ++i) {
+          section.insertAdjacentHTML(
+            "beforeend",
+            `
+                <div class="item">
+                    <div class="item-content">
+                    <a data-fancybox="gallery" href="figs/logo.jpg">
+                    <img src="figs/logo.jpg" alt='missing' /> </a>
+                    </div>
+                </div>
+                `
+          );
+        }
+
+        const sportsOption = [
+          "All Sports",
+          "Basketball",
+          "Soccer",
+          "Football",
+          "Badminton",
+          "Table Tennis",
+          "Tennis",
+        ];
+        const sourceOption = [
+          "All Sources",
+          "TV",
+          "Team",
+          "Fan",
+          "Demo",
+          "League",
+          "Other Organization",
+        ];
+        const narrativePatternOption = [
+          "All Narrative Pattern",
+          "Linear",
+          "FlashForward",
+          "FlashBack",
+          "TimeFork",
+          "ZigZag",
+          "Grouped",
+        ];
+
+        // select for video sports
+        const sportsSelect = document.querySelector("#video_sports");
+        let optionsForSports = "";
+        for (let sport of sportsOption) {
+          optionsForSports += `<option value="${sport}">${sport}</option>`;
+        }
+        sportsSelect.innerHTML = optionsForSports;
+
+        // select for video source
+        const sourceSelect = document.querySelector("#video_source");
+        let optionsForSource = "";
+        for (let source of sourceOption) {
+          optionsForSource += `<option value="${source}">${source}</option>`;
+        }
+        sourceSelect.innerHTML = optionsForSource;
+
+        // select for video source
+        const narrativeSelect = document.querySelector("#narrative_pattern");
+        let optionsForNarrative = "";
+        for (let narrative of narrativePatternOption) {
+          optionsForNarrative += `<option value="${narrative}">${narrative}</option>`;
+        }
+        narrativeSelect.innerHTML = optionsForNarrative;
+      }
+      generateCorpus();
     </script>
   </body>
 </html>
