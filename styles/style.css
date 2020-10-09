@@ -323,3 +323,60 @@ tr:nth-child(even) {
     transform: translateX(-50%);
     font-weight: bold;
 }
+
+.list_losses {
+    width: 90%;
+    margin: auto;
+}
+
+.card-content,
+.list_losses p {
+    margin-top: 0;
+    margin-bottom: 1.25rem;
+    padding: 1.25rem;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0, 0, 0, .125);
+    border-radius: .25rem;
+}
+
+.card-content > :first-child {
+    margin-top: 0;
+}
+.card-content > :last-child {
+    margin-bottom: 0;
+}
+
+.card-title,
+.list_losses>span {
+    display: block;
+    background: steelblue;
+    color: white;
+
+    padding: .5rem 1.25rem;
+    margin-bottom: 0;
+    border-bottom: 1px solid rgba(0, 0, 0, .125);
+    border-radius: calc(.25rem - 1px) calc(.25rem - 1px) 0 0;
+}
+
+.legend {
+    font-size: 1.3rem;
+    position: absolute;
+    text-align: center;
+    line-height: 30px;
+    align-items: center;
+    /* margin: 8px; */
+    background: #010101;
+    color: #fff;
+    display: inline-block;
+    width: 30px;
+    /* height: 16px; */
+    border-radius: 50%;
+    /* border: 2px solid #f7f7f7; */
+    bottom: 0;
+    transform: translateX(-50%);
+    font-weight: bold;
+}
+.clearfix {
+    clear: both;
+}

@@ -7,11 +7,6 @@
     <title>VisCommentator</title>
 
     <link rel="stylesheet" href="./styles//style.css" />
-
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css"
-    />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
@@ -72,41 +67,54 @@
       </section>
 
       <hr />
-
       <section id="examples" class="examples">
         <h2>Examples</h2>
         <!-- <figure
-          style="text-align: center; width: 60%; margin: 0 auto 20px auto"
-        >
-          <img src="figs/41_architecture.png" alt="missing" />
-        <figcaption>The complete architecture of our model that can parse both global and local information simultaneously.</figcaption> 
-        </figure>-->
+              style="text-align: center; width: 60%; margin: 0 auto 20px auto"
+            >
+              <img src="figs/41_architecture.png" alt="missing" />
+            <figcaption>The complete architecture of our model that can parse both global and local information simultaneously.</figcaption> 
+            </figure>-->
 
         <video src="videos/demo0.mp4" controls></video>
         <div id="examples_demo" class="gallary"></div>
       </section>
 
       <hr />
+      <section id="section1" class="section1">
+        <h2>section1</h2>
+        <figure
+          style="text-align: center; width: 60%; margin: 0 auto 20px auto"
+        >
+          <img src="figs/logo.jpg" alt="missing" />
+          <!-- <figcaption>The complete architecture of our model that can parse both global and local information simultaneously.</figcaption> -->
+        </figure>
+      </section>
+
+      <hr />
       <section id="section2" class="section1">
         <h2>Corpus</h2>
         <div class="filter-selector-group">
-          <select class="filter-select" id="video_sports"></select>
-          <select class="filter-select" id="video_source"></select>
-          <select class="filter-select" id="narrative_pattern"></select>
+          <select
+            class="filter-select"
+            id="video_sports"
+            onchange="filterCorpus()"
+          ></select>
+          <select
+            class="filter-select"
+            id="video_source"
+            onchange="filterCorpus()"
+          ></select>
+          <select
+            class="filter-select"
+            id="video_source_type"
+            onchange="filterCorpus()"
+          ></select>
         </div>
         <div id="examples_good" class="gallary"></div>
-        <div id="gallary_pagination" class="pagination">
-          <span>previous</span>
-          <span>1</span>
-          <span>2</span>
-        </div>
-      </section>
-      <hr />
-
-      <hr />
-      <section id="paper" class="paper">
-        <h2>Paper</h2>
-        <div class="gallary"></div>
+        <div id="empty_tip">No Video</div>
+        <div id="video_pagination" class="pagination"></div>
+        <div class="clearfix"></div>
       </section>
 
       <hr />
@@ -125,112 +133,78 @@
       function insertExampleImage() {
         const section = document.querySelector("#examples > #examples_demo");
         for (let i = 1; i < 7; ++i) {
-          section.insertAdjacentHTML(
-            "beforeend",
-            `
-                <div class="item item-3">
-                    <div class="item-content">
-                    <a data-fancybox="gallery" href="#demo_${i}">
-                        <img src="figs/demo${i}.png" alt='missing' /> 
-                        <i class="fa fa-play-circle"></i>
-                    </a>
-                    </div>
+          section.insertAdjacentHTML("beforeend",`
+            <div class="item item-3">
+                <div class="item-content">
+                <a data-fancybox="gallery" href="#demo_${i}">
+                    <img src="figs/demo${i}.png" alt='missing' />
+                    <i class="fa fa-play-circle"></i>
+                </a>
                 </div>
-<<<<<<< HEAD
-                <video
-          width="1280"
-          height="640"
-          controls
-          id="demo_${i}"
-          style="display: none"
-          src="./videos/demo${i}.mp4"
-        ></video>
-                `
-          );
+            </div>
+            <video
+                width="1280"
+                height="640"
+                controls
+                id="demo_${i}"
+                style="display: none"
+                src="./videos/demo${i}.mp4"
+            ></video>`);
         }
       }
-
-      function convertReference() {
-        const cites = document.querySelectorAll("cite");
-        let id = 1;
-        const orderBook = {};
-        cites.forEach((c) => {
-          if (!(c.textContent in orderBook)) {
-            orderBook[c.textContent] = id++;
-          }
-        });
-        cites.forEach((c) => {
-          const refId = c.textContent;
-          c.textContent = "";
-          c.insertAdjacentHTML(
-            "beforeend",
-            `<a href="#${refId}">[${orderBook[refId]}]</a>`
-          );
-        });
-
-        // reorder
-        const ps = Array.from(document.querySelectorAll("#references > p"));
-        ps.forEach((p) => {
-          p.innerHTML = `[${orderBook[p.id]}] ${p.innerHTML}`;
-          p.parentElement.removeChild(p);
-        });
-        const parent = document.querySelector("#references");
-        ps.filter((p) => orderBook[p.id])
-          .sort((a, b) => orderBook[a.id] - orderBook[b.id])
-          .forEach((p) => parent.appendChild(p));
-      }
-
-      // highlight code
-      hljs.initHighlightingOnLoad();
-
       insertExampleImage();
 
-      // reference
-      convertReference();
+      let currentPage = 0;
+      let pageNumber = 1;
+      const pageSize = 12;
+      let videoNumber = 0;
+      let videoData = [];
+      let selectedVideo = [];
 
-      // corpus
-      function generateCorpus() {
-        const section = document.querySelector("#examples_good");
-        for (let i = 1; i < 13; ++i) {
-          section.insertAdjacentHTML(
-            "beforeend",
-            `
-                <div class="item">
-                    <div class="item-content">
-                    <a data-fancybox="gallery" href="figs/logo.jpg">
-                    <img src="figs/logo.jpg" alt='missing' /> </a>
-                    </div>
-                </div>
-                `
-          );
-        }
-
+      function initVideoData() {
+        $.getJSON("data/cacheSampled-1.json", function (data) {
+          videoData = data;
+          filterCorpus();
+        });
+      }
+      initVideoData();
+      // selector options
+      function generateSelector() {
         const sportsOption = [
           "All Sports",
-          "Basketball",
-          "Soccer",
-          "Football",
           "Badminton",
+          "BasketBall",
+          "Football",
           "Table Tennis",
           "Tennis",
+          "American Football",
+          "Volleyball",
         ];
         const sourceOption = [
           "All Sources",
-          "TV",
-          "Team",
-          "Fan",
-          "Demo",
-          "League",
-          "Other Organization",
+          "CCTV",
+          "ShuttleFlash",
+          "陈金",
+          "Boston Celtics",
+          "ClippersCourtvision",
+          "SecondSpectrum",
+          "Tencent",
+          "FIFA",
+          "Vizrt",
+          "ITTF",
+          "Sports analysis",
+          "TennisGate",
+          "ESPN",
+          "NFL",
         ];
-        const narrativePatternOption = [
-          "All Narrative Pattern",
-          "Linear",
-          "FlashForward",
-          "FlashBack",
-          "TimeFork",
-          "ZigZag",
-          "Grouped",
+        const sourceTypeOption = [
+          "All Source Types",
+          "tv",
+          "team",
+          "fan",
+          "demo",
+          "league",
+          "other organization",
         ];
 
         // select for video sports
@@ -250,14 +224,130 @@
         sourceSelect.innerHTML = optionsForSource;
 
         // select for video source
-        const narrativeSelect = document.querySelector("#narrative_pattern");
-        let optionsForNarrative = "";
-        for (let narrative of narrativePatternOption) {
-          optionsForNarrative += `<option value="${narrative}">${narrative}</option>`;
+        const sourceTypeSelect = document.querySelector("#video_source_type");
+        let optionsForSourceType = "";
+        for (let sourceType of sourceTypeOption) {
+          optionsForSourceType += `<option value="${sourceType}">${sourceType}</option>`;
         }
-        narrativeSelect.innerHTML = optionsForNarrative;
+        sourceTypeSelect.innerHTML = optionsForSourceType;
       }
-      generateCorpus();
+      generateSelector();
+
+      // corpus
+      function filterCorpus() {
+        const selectedSport = document.querySelector("#video_sports").value;
+        const selectedSource = document.querySelector("#video_source").value;
+        const selectedSourceType = document.querySelector("#video_source_type")
+          .value;
+
+        // do the filter
+        selectedVideo = [];
+        videoData.forEach((video, i) => {
+          if (selectedSport === "All Sports" || selectedSport === video.sport) {
+            if (
+              selectedSource === "All Sources" ||
+              selectedSource === video.source
+            ) {
+              if (
+                selectedSourceType === "All Source Types" ||
+                selectedSourceType === video.sourceType
+              ) {
+                selectedVideo.push(video);
+              }
+            }
+          }
+        });
+
+        if (selectedVideo.length === 0) {
+          $("#examples_good").css("display", "none");
+          $("#empty_tip").css("display", "block");
+        } else {
+          $("#examples_good").css("display", "");
+          $("#empty_tip").css("display", "none");
+          const section = document.querySelector("#examples_good");
+          section.innerHTML = "";
+          videoNumber = selectedVideo.length;
+          currentPage = 1;
+          pageNumber = parseInt((videoNumber + pageSize - 1) / pageSize);
+
+          // video list
+          for (let i = 0; i < pageSize; i++) {
+            section.insertAdjacentHTML(
+              "beforeend",
+              `
+                <div class="item">
+                    <div class="item-content">
+                    <a data-fancybox="gallery" href="http://vegaar.hkustvis.org/videos/${selectedVideo[i].name}">
+                    <video src="http://vegaar.hkustvis.org/videos/${selectedVideo[i].name}" alt='missing' />
+                     </a>
+                    </div>
+                </div>
+                `
+            );
+          }
+
+          // pagination
+          const pagination = document.querySelector("#video_pagination");
+          let paginationHtml = "";
+          paginationHtml += `<button class="pagination-button" onclick="lastPage()" disabled><</button>`;
+          for (let i = 1; i < pageNumber + 1; i++) {
+            let className = "pagination-button";
+            if (currentPage === i) className += " active";
+            paginationHtml += `<button class="${className}" onclick="gotoPage(${i})">${i}</button>`;
+          }
+          paginationHtml += `<button id="next_page" class="pagination-button" onclick="nextPage()">></button>`;
+          pagination.innerHTML = paginationHtml;
+          if (pageNumber === 1) $("#next_page").attr("disabled", true);
+        }
+      }
+
+      function lastPage() {
+        gotoPage(currentPage - 1);
+      }
+
+      function nextPage() {
+        gotoPage(currentPage + 1);
+      }
+
+      function gotoPage(pageIndex) {
+        const section = document.querySelector("#examples_good");
+        section.innerHTML = "";
+        currentPage = pageIndex;
+
+        // video list
+        let maxNumber;
+        if (currentPage * pageSize >= videoNumber) maxNumber = videoNumber;
+        else maxNumber = currentPage * pageSize;
+        for (let i = (currentPage - 1) * pageSize; i < maxNumber; i++) {
+          section.insertAdjacentHTML(
+            "beforeend",
+            `
+                <div class="item">
+                    <div class="item-content">
+                    <a data-fancybox="gallery" href="http://vegaar.hkustvis.org/videos/${selectedVideo[i].name}">
+                    <video src="http://vegaar.hkustvis.org/videos/${selectedVideo[i].name}" alt='missing' />
+                     </a>
+                    </div>
+                </div>
+                `
+          );
+        }
+
+        // pagination
+        const pagination = document.querySelector("#video_pagination");
+        let paginationHtml = "";
+        paginationHtml += `<button id="last_page" class="pagination-button" onclick="lastPage()"><</button>`;
+        for (let i = 1; i < pageNumber + 1; i++) {
+          let className = "pagination-button";
+          if (currentPage === i) className += " active";
+          paginationHtml += `<button class="${className}" onclick="gotoPage(${i})">${i}</button>`;
+        }
+        paginationHtml += `<button id="next_page" class="pagination-button" onclick="nextPage()">></button>`;
+        pagination.innerHTML = paginationHtml;
+
+        if (currentPage === 1) $("#last_page").attr("disabled", true);
+        if (currentPage === pageNumber) $("#next_page").attr("disabled", true);
+      }
     </script>
   </body>
 </html>
