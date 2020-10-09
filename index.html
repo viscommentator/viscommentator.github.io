@@ -1,405 +1,162 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <!-- <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" /> -->
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>VisCommentator</title>
-    <style>
-        * {
-            box-sizing: border-box;
-            font-family: "Trebuchet MS", Helvetica, sans-serif;
-        }
 
-        a {
-            color: inherit;
-        }
+    <link rel="stylesheet" href="./styles//style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
 
-        p {
-            text-align: justify;
-        }
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css"
+    />
+    <link rel="stylesheet" href="styles/tomorrow-night.css" />
 
-        cite {
-            font-style: normal;
-        }
-
-        body {
-            box-sizing: border-box;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            font-family: Verdana, Geneva, sans-serif;
-            margin: 0;
-            padding: 0;
-        }
-
-        .teaser {
-            position: relative;
-        }
-
-        img,
-        video {
-            width: 100%;
-        }
-
-        .teaser .mask {
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background-color: #2c3e50;
-            opacity: 0.5;
-        }
-
-        .teaser .teaser-content {
-            position: absolute;
-            bottom: 30%;
-            /* left: 50%;
-            transform: translate(-50%, -50%); */
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .teaser-content h1 {
-            color: #ecf0f1;
-            font-size: calc(0.5rem + 2.5vw);
-            margin-bottom: 0;
-            margin-top: 0;
-            letter-spacing: 0.25rem;
-            text-align: center;
-            width: 80%;
-            margin-bottom: 4rem;
-        }
-
-        .teaser .jump-btn-group {
-            display: flex;
-            justify-content: space-around;
-            border: 1px #fff solid;
-            border-radius: 4px;
-        }
-
-        .teaser .jump-btn:hover {
-            background-color: rgba(255, 255, 255, 0.075);
-        }
-
-        .teaser .jump-btn {
-            border-left: 0.5px #fff solid;
-            min-width: 6rem;
-            height: 2.5rem;
-            padding-left: 1rem;
-            padding-right: 1rem;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: #fff;
-            cursor: pointer;
-            letter-spacing: 0.2rem;
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            text-decoration: none;
-        }
-
-        section {
-            margin: 32px auto;
-        }
-
-        section h2 {
-            text-align: center;
-        }
-
-        .abstract {
-            text-align: justify;
-        }
-
-        .gallary {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-around;
-            align-content: space-between;
-            /* padding: 8px 8px 0px 8px; */
-        }
-
-        .paper .gallary:hover {
-            border: 1px solid #27ae60;
-        }
-        .paper .item-content:hover {
-            /* disable the hover*/
-            border: 1px solid #dddddd;
-        }
-
-        .item {
-            width: 24%;
-            position: relative;
-            margin-bottom: 8px;
-            background-color: #fff;
-        }
-
-        .item-content {
-            overflow: hidden;
-            width: 100%;
-            height: 100%;
-            border: 1px solid #dddddd;
-            border-radius: 10px;
-        }
-
-        .item-content:hover {
-            border: 1px solid #27ae60;
-            border-radius: 10px;
-        }
-
-        .item-content img, .item-content video {
-            /* max-height: 100%;
-            max-width: 100%;
-            height: auto;
-            width: auto; */
-            position: relative;
-            top: 50%;
-            transform: translateY(-50%);
-        }
-
-
-        .item-1 {
-            width: 96%;
-        }
-
-        .item-2 {
-            width: 48%;
-        }
-
-        .item-3 {
-            width: 32%;
-        }
-
-        .item-5 {
-            width: 19%;
-        }
-
-        .filter-input {
-            width: 100px;
-            float: right;
-        }
-
-        #examples_good {
-            width: 120%;
-            margin-left: -10%;
-        }
-
-        #empty_tip {
-            display: none;
-            text-align: center;
-            margin-top: 5rem;
-            font-size: 1.5rem;
-
-        }
-
-        .filter-selector-group {
-            float: right;
-            margin-bottom: 0.5rem;
-        }
-
-        .filter-select {
-            padding: 4px;
-            border-radius: 4px;
-            min-width: 6rem;
-            height: 2.5rem;
-            display: inline-flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-            letter-spacing: 0.2rem;
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            text-decoration: none;
-        }
-
-        #video_pagination {
-            float: right;
-        }
-
-        .pagination-button {
-            border: none;
-            background: none;
-            height: 2.5rem;
-            display: inline-flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-            letter-spacing: 0.2rem;
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            text-decoration: none;
-        }
-        .pagination-button:hover {
-            color: #09ceff;
-        }
-        .pagination-button.active {
-            color: #09abff;
-        }
-
-        table {
-            font-family: arial, sans-serif;
-            border-collapse: collapse;
-            margin: 16px auto;
-        }
-
-        td,
-        th {
-            border: 1px solid #dddddd;
-            text-align: left;
-            padding: 8px;
-        }
-
-        tr:nth-child(even) {
-            background-color: #dddddd;
-        }
-
-        .training pre {
-            display: flex;
-            justify-content: space-between;
-        }
-
-        .training pre code {
-            width: 48%;
-            font-size: 0.8em;
-        }
-
-        .list_losses {
-            width: 90%;
-            margin: auto;
-        }
-
-        .card-content,
-        .list_losses p {
-            margin-top: 0;
-            margin-bottom: 1.25rem;
-            padding: 1.25rem;
-            background-color: #fff;
-            background-clip: border-box;
-            border: 1px solid rgba(0, 0, 0, .125);
-            border-radius: .25rem;
-        }
-
-        .card-content > :first-child {
-            margin-top: 0;
-        }
-        .card-content > :last-child {
-            margin-bottom: 0;
-        }
-
-        .card-title,
-        .list_losses>span {
-            display: block;
-            background: steelblue;
-            color: white;
-
-            padding: .5rem 1.25rem;
-            margin-bottom: 0;
-            border-bottom: 1px solid rgba(0, 0, 0, .125);
-            border-radius: calc(.25rem - 1px) calc(.25rem - 1px) 0 0;
-        }
-
-        .legend {
-            font-size: 1.3rem;
-            position: absolute;
-            text-align: center;
-            line-height: 30px;
-            align-items: center;
-            /* margin: 8px; */
-            background: #010101;
-            color: #fff;
-            display: inline-block;
-            width: 30px;
-            /* height: 16px; */
-            border-radius: 50%;
-            /* border: 2px solid #f7f7f7; */
-            bottom: 0;
-            transform: translateX(-50%);
-            font-weight: bold;
-        }
-        .clearfix {
-            clear: both;
-        }
-    </style>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
-    <link rel="stylesheet" href="styles/tomorrow-night.css">
     <script src="js/highlight.pack.js"></script>
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS_CHTML' async></script>
-</head>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS_CHTML"
+      async
+    ></script>
+  </head>
 
-<body>
+  <body>
     <div class="teaser">
-        <img src="./figs/logo.jpg" />
-        <div class="mask"></div>
-        <div class="teaser-content">
-            <h1>Augmenting Sports Videos with VisCommentator
-            </h1>
-            <div class="jump-btn-group">
-                <a href="#section1" class="jump-btn">section1</a>
-                <a href="#section2" class="jump-btn">section2</a>
-                <a href="#section3" class="jump-btn">section3</a>
-                <a href="#section4" class="jump-btn">section4</a>
-                <a href="#paper" class="jump-btn">Paper</a>
-            </div>
+      <img src="./figs/logo.jpg" />
+      <div class="mask"></div>
+      <div class="teaser-content">
+        <h1>Augmenting Sports Videos with VisCommentator</h1>
+        <div class="jump-btn-group">
+          <a href="#examples" class="jump-btn">Examples</a>
+          <a href="#section2" class="jump-btn">section2</a>
+          <a href="#section3" class="jump-btn">section3</a>
+          <a href="#section4" class="jump-btn">section4</a>
+          <a href="#paper" class="jump-btn">Paper</a>
         </div>
+      </div>
     </div>
 
-    <div class="content" style="width:80vw;max-width: 1024px;">
-        <section id="abstract" class="abstract">
-            <h2>Abstract</h2>
-        </section>
+    <div class="content" style="width: 80vw; max-width: 1024px">
+      <section id="abstract" class="abstract">
+        <h2>Abstract</h2>
+        <p>
+          Augmenting sports videos with data visualizations is gaining traction
+          given its ability to communicate insights and explicate
+          playerstrategies engagingly. However, creating such augmented videos
+          is challenging, as it requires considerable domain expertise in
+          sportsanalytics and video editing skills. To ease the creation
+          process, we present a design space to characterize augmented sports
+          videosat element- (<em>what are the constituents</em>) and clip-levels
+          (<em>how the constituents are organized</em>) by systematically
+          reviewing 233 examplescollected from TV channels, teams, and leagues.
+          The design space provides guidance for selecting data insights and
+          visualizations forvarious purposes. Informed by the design space, we
+          present VisCommentator that facilitates the creation of augmented
+          videos fortable tennis with data insights and visualizations
+          recommendations. A user study with seven domain experts confirms the
+          usefulnessand effectiveness of the system. Another study with sports
+          fans found the resulting videos informative and engaging.
+        </p>
+      </section>
 
-        <hr />
-        
-        <hr />
-        <section id="section1" class="section1">
-            <h2>section1</h2>
-            <figure style="text-align: center;
-            width: 60%;
-            margin: 0 auto 20px auto;">
-                <img src="figs/logo.jpg" alt='missing' />
-                <!-- <figcaption>The complete architecture of our model that can parse both global and local information simultaneously.</figcaption> -->
-            </figure>
+      <hr />
 
-        </section>
-        <hr />
+      <section id="examples" class="examples">
+        <h2>Examples</h2>
+        <!-- <figure
+              style="text-align: center; width: 60%; margin: 0 auto 20px auto"
+            >
+              <img src="figs/41_architecture.png" alt="missing" />
+            <figcaption>The complete architecture of our model that can parse both global and local information simultaneously.</figcaption> 
+            </figure>-->
 
-        <hr />
-        <section id="section2" class="section1">
-            <h2>Corpus</h2>
-            <div class="filter-selector-group">
-                <select class="filter-select" id="video_sports" onchange="filterCorpus()"></select>
-                <select class="filter-select" id="video_source" onchange="filterCorpus()"></select>
-                <select class="filter-select" id="video_source_type" onchange="filterCorpus()"></select>
-            </div>
-            <div id="examples_good" class="gallary">
-            </div>
-            <div id="empty_tip">
-                No Video
-            </div>
-            <div id="video_pagination" class="pagination"></div>
-            <div class="clearfix"></div>
-        </section>
-        <hr />
+        <video src="videos/demo0.mp4" controls></video>
+        <div id="examples_demo" class="gallary"></div>
+      </section>
 
-        <hr />
-        <section id="paper" class="paper">
-            <h2>Paper</h2>
-            <div class="gallary"></div>
-        </section>
+      <hr />
+      <section id="section1" class="section1">
+        <h2>section1</h2>
+        <figure
+          style="text-align: center; width: 60%; margin: 0 auto 20px auto"
+        >
+          <img src="figs/logo.jpg" alt="missing" />
+          <!-- <figcaption>The complete architecture of our model that can parse both global and local information simultaneously.</figcaption> -->
+        </figure>
+      </section>
+      <hr />
 
-        <hr />
-        <section id="references" class="references">
-            <h2 style="text-align:left;">Reference</h2>
+      <section id="section2" class="section1">
+        <h2>Corpus</h2>
+        <div class="filter-selector-group">
+          <select
+            class="filter-select"
+            id="video_sports"
+            onchange="filterCorpus()"
+          ></select>
+          <select
+            class="filter-select"
+            id="video_source"
+            onchange="filterCorpus()"
+          ></select>
+          <select
+            class="filter-select"
+            id="video_source_type"
+            onchange="filterCorpus()"
+          ></select>
+        </div>
+        <div id="examples_good" class="gallary"></div>
+        <div id="empty_tip">No Video</div>
+        <div id="video_pagination" class="pagination"></div>
+        <div class="clearfix"></div>
+      </section>
+      <hr />
 
-        </section>
+      <hr />
+      <section id="paper" class="paper">
+        <h2>Paper</h2>
+        <div class="gallary"></div>
+      </section>
+
+      <hr />
+      <section id="references" class="references">
+        <h2 style="text-align: left">Reference</h2>
+      </section>
     </div>
 
     <script>
+              function insertExampleImage() {
+                  const section = document.querySelector("#examples > #examples_demo");
+                  for (let i = 1; i < 7; ++i) {
+                    section.insertAdjacentHTML("beforeend", `
+                        <div class="item item-3">
+                            <div class="item-content">
+                            <a data-fancybox="gallery" href="#demo_${i}">
+                                <img src="figs/demo${i}.png" alt='missing' />
+                                <i class="fa fa-play-circle"></i>
+                            </a>
+                            </div>
+                        </div>
+                        <video
+                            width="1280"
+                            height="640"
+                            controls
+                            id="demo_${i}"
+                            style="display: none"
+                            src="./videos/demo${i}.mp4"
+                        ></video>`
+                );
+              }
+            }
+            insertExampleImage()
+
         let currentPage = 0
         let pageNumber = 1
         const pageSize = 12
@@ -414,67 +171,8 @@
             })
         }
         initVideoData()
-
-
-
-        function insertExampleImage() {
-            const section = document.querySelector('#examples > #examples_good')
-            for (let i = 1; i < 13; ++i) {
-                section.insertAdjacentHTML('beforeend', `
-                <div class="item">
-                    <div class="item-content">
-                    <a data-fancybox="gallery" href="figs/examples/${i}_u.png">
-                    <img src="figs/examples/${i}_u_tn.jpg" alt='missing' /> </a>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="item-content">
-                        <a data-fancybox="gallery" href="figs/examples/${i}_d.png">
-                            <img src="figs/examples/${i}_d_tn.jpg" alt='missing' />
-                        </a>
-                    </div>
-                </div>
-                `)
-            }
-
-        }
-
-
-        function convertReference() {
-            const cites = document.querySelectorAll('cite')
-            let id = 1
-            const orderBook = {}
-            cites.forEach(c => {
-                if (!(c.textContent in orderBook)) {
-                    orderBook[c.textContent] = id++
-                }
-            })
-            cites.forEach(c => {
-                const refId = c.textContent
-                c.textContent = ''
-                c.insertAdjacentHTML('beforeend', `<a href="#${refId}">[${orderBook[refId]}]</a>`)
-            })
-
-            // reorder
-            const ps = Array.from(document.querySelectorAll('#references > p'))
-            ps.forEach(p => {
-                p.innerHTML = `[${orderBook[p.id]}] ${p.innerHTML}`
-                p.parentElement.removeChild(p)
-            })
-            const parent = document.querySelector('#references')
-            ps.filter(p => orderBook[p.id])
-                .sort((a, b) => orderBook[a.id] - orderBook[b.id])
-                .forEach(p => parent.appendChild(p))
-        }
-
-        // highlight code
-        hljs.initHighlightingOnLoad()
-
-        // reference
-        convertReference()
-
-        // selector options
-        function generateSelector() {
+   // selector options
+   function generateSelector() {
             const sportsOption = ["All Sports", "Badminton", "BasketBall", "Football", "Table Tennis", "Tennis", "American Football", "Volleyball"]
             const sourceOption = ["All Sources", "CCTV", "ShuttleFlash", "陈金", "Boston Celtics", "ClippersCourtvision", "SecondSpectrum", "Tencent", "FIFA", "Vizrt", "ITTF", "Sports analysis", "TennisGate", "ESPN", "NFL"]
             const sourceTypeOption = ["All Source Types", "tv", "team", "fan", "demo", "league", "other organization"]
@@ -615,8 +313,6 @@
             if (currentPage === pageNumber)
                 $("#next_page").attr("disabled", true)
         }
-
     </script>
-</body>
-
+  </body>
 </html>
