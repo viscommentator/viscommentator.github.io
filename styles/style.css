@@ -141,7 +141,8 @@ section h2 {
     border-radius: 10px;
 }
 
-.item-content img {
+.item-content img,
+.item-content video {
     /* max-height: 100%;
     max-width: 100%;
     height: auto;
@@ -149,6 +150,42 @@ section h2 {
     position: relative;
     /* top: 50%;
     transform: translateY(-50%); */
+}
+
+#empty_tip {
+    display: none;
+    text-align: center;
+    margin-top: 5rem;
+    font-size: 1.5rem;
+
+}
+
+#video_pagination {
+    float: right;
+}
+
+.pagination-button {
+    border: none;
+    background: none;
+    height: 2.5rem;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    letter-spacing: 0.2rem;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+.pagination-button:hover {
+    color: #09ceff;
+}
+.pagination-button.active {
+    color: #09abff;
+}
+
+.clearfix {
+    clear: both;
 }
 
 .item-content a i.fa {
