@@ -67,7 +67,6 @@
       </section>
 
       <hr />
-
       <section id="examples" class="examples">
         <h2>Examples</h2>
         <!-- <figure
@@ -91,8 +90,8 @@
           <!-- <figcaption>The complete architecture of our model that can parse both global and local information simultaneously.</figcaption> -->
         </figure>
       </section>
-      <hr />
 
+      <hr />
       <section id="section2" class="section1">
         <h2>Corpus</h2>
         <div class="filter-selector-group">
@@ -117,7 +116,6 @@
         <div id="video_pagination" class="pagination"></div>
         <div class="clearfix"></div>
       </section>
-      <hr />
 
       <hr />
       <section id="paper" class="paper">
@@ -132,111 +130,151 @@
     </div>
 
     <script>
-              function insertExampleImage() {
-                  const section = document.querySelector("#examples > #examples_demo");
-                  for (let i = 1; i < 7; ++i) {
-                    section.insertAdjacentHTML("beforeend", `
-                        <div class="item item-3">
-                            <div class="item-content">
-                            <a data-fancybox="gallery" href="#demo_${i}">
-                                <img src="figs/demo${i}.png" alt='missing' />
-                                <i class="fa fa-play-circle"></i>
-                            </a>
-                            </div>
-                        </div>
-                        <video
-                            width="1280"
-                            height="640"
-                            controls
-                            id="demo_${i}"
-                            style="display: none"
-                            src="./videos/demo${i}.mp4"
-                        ></video>`
-                );
+      function insertExampleImage() {
+        const section = document.querySelector("#examples > #examples_demo");
+        for (let i = 1; i < 7; ++i) {
+          section.insertAdjacentHTML("beforeend",`
+            <div class="item item-3">
+                <div class="item-content">
+                <a data-fancybox="gallery" href="#demo_${i}">
+                    <img src="figs/demo${i}.png" alt='missing' />
+                    <i class="fa fa-play-circle"></i>
+                </a>
+                </div>
+            </div>
+            <video
+                width="1280"
+                height="640"
+                controls
+                id="demo_${i}"
+                style="display: none"
+                src="./videos/demo${i}.mp4"
+            ></video>`);
+        }
+      }
+      insertExampleImage();
+
+      let currentPage = 0;
+      let pageNumber = 1;
+      const pageSize = 12;
+      let videoNumber = 0;
+      let videoData = [];
+      let selectedVideo = [];
+
+      function initVideoData() {
+        $.getJSON("data/cacheSampled-1.json", function (data) {
+          videoData = data;
+          filterCorpus();
+        });
+      }
+      initVideoData();
+      // selector options
+      function generateSelector() {
+        const sportsOption = [
+          "All Sports",
+          "Badminton",
+          "BasketBall",
+          "Football",
+          "Table Tennis",
+          "Tennis",
+          "American Football",
+          "Volleyball",
+        ];
+        const sourceOption = [
+          "All Sources",
+          "CCTV",
+          "ShuttleFlash",
+          "陈金",
+          "Boston Celtics",
+          "ClippersCourtvision",
+          "SecondSpectrum",
+          "Tencent",
+          "FIFA",
+          "Vizrt",
+          "ITTF",
+          "Sports analysis",
+          "TennisGate",
+          "ESPN",
+          "NFL",
+        ];
+        const sourceTypeOption = [
+          "All Source Types",
+          "tv",
+          "team",
+          "fan",
+          "demo",
+          "league",
+          "other organization",
+        ];
+
+        // select for video sports
+        const sportsSelect = document.querySelector("#video_sports");
+        let optionsForSports = "";
+        for (let sport of sportsOption) {
+          optionsForSports += `<option value="${sport}">${sport}</option>`;
+        }
+        sportsSelect.innerHTML = optionsForSports;
+
+        // select for video source
+        const sourceSelect = document.querySelector("#video_source");
+        let optionsForSource = "";
+        for (let source of sourceOption) {
+          optionsForSource += `<option value="${source}">${source}</option>`;
+        }
+        sourceSelect.innerHTML = optionsForSource;
+
+        // select for video source
+        const sourceTypeSelect = document.querySelector("#video_source_type");
+        let optionsForSourceType = "";
+        for (let sourceType of sourceTypeOption) {
+          optionsForSourceType += `<option value="${sourceType}">${sourceType}</option>`;
+        }
+        sourceTypeSelect.innerHTML = optionsForSourceType;
+      }
+      generateSelector();
+
+      // corpus
+      function filterCorpus() {
+        const selectedSport = document.querySelector("#video_sports").value;
+        const selectedSource = document.querySelector("#video_source").value;
+        const selectedSourceType = document.querySelector("#video_source_type")
+          .value;
+
+        // do the filter
+        selectedVideo = [];
+        videoData.forEach((video, i) => {
+          if (selectedSport === "All Sports" || selectedSport === video.sport) {
+            if (
+              selectedSource === "All Sources" ||
+              selectedSource === video.source
+            ) {
+              if (
+                selectedSourceType === "All Source Types" ||
+                selectedSourceType === video.sourceType
+              ) {
+                selectedVideo.push(video);
               }
             }
-            insertExampleImage()
+          }
+        });
 
-        let currentPage = 0
-        let pageNumber = 1
-        const pageSize = 12
-        let videoNumber = 0
-        let videoData = []
-        let selectedVideo = []
+        if (selectedVideo.length === 0) {
+          $("#examples_good").css("display", "none");
+          $("#empty_tip").css("display", "block");
+        } else {
+          $("#examples_good").css("display", "");
+          $("#empty_tip").css("display", "none");
+          const section = document.querySelector("#examples_good");
+          section.innerHTML = "";
+          videoNumber = selectedVideo.length;
+          currentPage = 1;
+          pageNumber = parseInt((videoNumber + pageSize - 1) / pageSize);
 
-        function initVideoData() {
-            $.getJSON("data/cacheSampled-1.json", function (data) {
-                videoData = data
-                filterCorpus()
-            })
-        }
-        initVideoData()
-   // selector options
-   function generateSelector() {
-            const sportsOption = ["All Sports", "Badminton", "BasketBall", "Football", "Table Tennis", "Tennis", "American Football", "Volleyball"]
-            const sourceOption = ["All Sources", "CCTV", "ShuttleFlash", "陈金", "Boston Celtics", "ClippersCourtvision", "SecondSpectrum", "Tencent", "FIFA", "Vizrt", "ITTF", "Sports analysis", "TennisGate", "ESPN", "NFL"]
-            const sourceTypeOption = ["All Source Types", "tv", "team", "fan", "demo", "league", "other organization"]
-
-            // select for video sports
-            const sportsSelect = document.querySelector('#video_sports')
-            let optionsForSports = ""
-            for(let sport of sportsOption) {
-                optionsForSports += `<option value="${sport}">${sport}</option>`
-            }
-            sportsSelect.innerHTML = optionsForSports
-
-            // select for video source
-            const sourceSelect = document.querySelector('#video_source')
-            let optionsForSource = ""
-            for(let source of sourceOption) {
-                optionsForSource += `<option value="${source}">${source}</option>`
-            }
-            sourceSelect.innerHTML = optionsForSource
-
-            // select for video source
-            const sourceTypeSelect = document.querySelector('#video_source_type')
-            let optionsForSourceType = ""
-            for(let sourceType of sourceTypeOption) {
-                optionsForSourceType += `<option value="${sourceType}">${sourceType}</option>`
-            }
-            sourceTypeSelect.innerHTML = optionsForSourceType
-        }
-        generateSelector()
-
-        // corpus
-        function filterCorpus() {
-            const selectedSport = document.querySelector('#video_sports').value
-            const selectedSource = document.querySelector('#video_source').value
-            const selectedSourceType = document.querySelector('#video_source_type').value
-
-            // do the filter
-            selectedVideo = []
-            videoData.forEach((video, i) => {
-                if (selectedSport === "All Sports" || selectedSport === video.sport) {
-                    if (selectedSource === "All Sources" || selectedSource === video.source) {
-                        if (selectedSourceType === "All Source Types" || selectedSourceType === video.sourceType) {
-                            selectedVideo.push(video)
-                        }
-                    }
-                }
-            })
-
-            if (selectedVideo.length ===0 ) {
-                $("#examples_good").css("display", "none")
-                $("#empty_tip").css("display", "block")
-            }
-            else {
-                $("#examples_good").css("display", "")
-                $("#empty_tip").css("display", "none")
-                const section = document.querySelector('#examples_good')
-                section.innerHTML = ""
-                videoNumber = selectedVideo.length
-                currentPage = 1
-                pageNumber = parseInt((videoNumber + pageSize - 1) / pageSize)
-
-                // video list
-                for (let i = 0; i < pageSize; i++) {
-                    section.insertAdjacentHTML('beforeend', `
+          // video list
+          for (let i = 0; i < pageSize; i++) {
+            section.insertAdjacentHTML(
+              "beforeend",
+              `
                 <div class="item">
                     <div class="item-content">
                     <a data-fancybox="gallery" href="http://vegaar.hkustvis.org/videos/${selectedVideo[i].name}">
@@ -244,47 +282,46 @@
                      </a>
                     </div>
                 </div>
-                `)
-                }
+                `
+            );
+          }
 
-                // pagination
-                const pagination = document.querySelector('#video_pagination')
-                let paginationHtml = ""
-                paginationHtml += `<button class="pagination-button" onclick="lastPage()" disabled><</button>`
-                for (let i = 1; i < pageNumber + 1; i++) {
-                    let className = "pagination-button"
-                    if (currentPage === i)
-                        className += " active"
-                    paginationHtml+=`<button class="${className}" onclick="gotoPage(${i})">${i}</button>`
-                }
-                paginationHtml += `<button id="next_page" class="pagination-button" onclick="nextPage()">></button>`
-				pagination.innerHTML = paginationHtml
-                if (pageNumber === 1)
-                    $("#next_page").attr("disabled", true)
-            }
+          // pagination
+          const pagination = document.querySelector("#video_pagination");
+          let paginationHtml = "";
+          paginationHtml += `<button class="pagination-button" onclick="lastPage()" disabled><</button>`;
+          for (let i = 1; i < pageNumber + 1; i++) {
+            let className = "pagination-button";
+            if (currentPage === i) className += " active";
+            paginationHtml += `<button class="${className}" onclick="gotoPage(${i})">${i}</button>`;
+          }
+          paginationHtml += `<button id="next_page" class="pagination-button" onclick="nextPage()">></button>`;
+          pagination.innerHTML = paginationHtml;
+          if (pageNumber === 1) $("#next_page").attr("disabled", true);
         }
+      }
 
-        function lastPage() {
-            gotoPage(currentPage-1)
-        }
+      function lastPage() {
+        gotoPage(currentPage - 1);
+      }
 
-        function nextPage() {
-            gotoPage(currentPage + 1)
-        }
+      function nextPage() {
+        gotoPage(currentPage + 1);
+      }
 
-        function gotoPage(pageIndex) {
-            const section = document.querySelector('#examples_good')
-            section.innerHTML = ""
-            currentPage = pageIndex
+      function gotoPage(pageIndex) {
+        const section = document.querySelector("#examples_good");
+        section.innerHTML = "";
+        currentPage = pageIndex;
 
-            // video list
-			let maxNumber
-			if (currentPage * pageSize >= videoNumber)
-                maxNumber = videoNumber
-			else
-			    maxNumber = currentPage * pageSize
-            for (let i = (currentPage - 1) * pageSize; i < maxNumber; i++) {
-                section.insertAdjacentHTML('beforeend', `
+        // video list
+        let maxNumber;
+        if (currentPage * pageSize >= videoNumber) maxNumber = videoNumber;
+        else maxNumber = currentPage * pageSize;
+        for (let i = (currentPage - 1) * pageSize; i < maxNumber; i++) {
+          section.insertAdjacentHTML(
+            "beforeend",
+            `
                 <div class="item">
                     <div class="item-content">
                     <a data-fancybox="gallery" href="http://vegaar.hkustvis.org/videos/${selectedVideo[i].name}">
@@ -292,27 +329,25 @@
                      </a>
                     </div>
                 </div>
-                `)
-            }
-
-            // pagination
-            const pagination = document.querySelector('#video_pagination')
-            let paginationHtml = ""
-            paginationHtml += `<button id="last_page" class="pagination-button" onclick="lastPage()"><</button>`
-                for (let i = 1; i < pageNumber + 1; i++) {
-                    let className = "pagination-button"
-                    if (currentPage === i)
-                        className += " active"
-                    paginationHtml+=`<button class="${className}" onclick="gotoPage(${i})">${i}</button>`
-                }
-                paginationHtml += `<button id="next_page" class="pagination-button" onclick="nextPage()">></button>`
-                pagination.innerHTML = paginationHtml
-
-			if (currentPage === 1)
-			    $("#last_page").attr("disabled", true)
-            if (currentPage === pageNumber)
-                $("#next_page").attr("disabled", true)
+                `
+          );
         }
+
+        // pagination
+        const pagination = document.querySelector("#video_pagination");
+        let paginationHtml = "";
+        paginationHtml += `<button id="last_page" class="pagination-button" onclick="lastPage()"><</button>`;
+        for (let i = 1; i < pageNumber + 1; i++) {
+          let className = "pagination-button";
+          if (currentPage === i) className += " active";
+          paginationHtml += `<button class="${className}" onclick="gotoPage(${i})">${i}</button>`;
+        }
+        paginationHtml += `<button id="next_page" class="pagination-button" onclick="nextPage()">></button>`;
+        pagination.innerHTML = paginationHtml;
+
+        if (currentPage === 1) $("#last_page").attr("disabled", true);
+        if (currentPage === pageNumber) $("#next_page").attr("disabled", true);
+      }
     </script>
   </body>
 </html>
