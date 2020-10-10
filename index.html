@@ -21,10 +21,8 @@
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
     <script src="js/highlight.pack.js"></script>
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS_CHTML"
-      async
-    ></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS_CHTML' async></script>
+    <link rel="stylesheet" href="styles/design-space-large.css"/>
   </head>
 
   <body>
@@ -44,55 +42,56 @@
     </div>
 
     <div class="content" style="width: 80vw; max-width: 1024px">
-      <section id="abstract" class="abstract">
-        <h2>Abstract</h2>
-        <p>
-          Augmenting sports videos with data visualizations is gaining traction
-          given its ability to communicate insights and explicate
-          playerstrategies engagingly. However, creating such augmented videos
-          is challenging, as it requires considerable domain expertise in
-          sportsanalytics and video editing skills. To ease the creation
-          process, we present a design space to characterize augmented sports
-          videosat element- (<em>what are the constituents</em>) and clip-levels
-          (<em>how the constituents are organized</em>) by systematically
-          reviewing 233 examplescollected from TV channels, teams, and leagues.
-          The design space provides guidance for selecting data insights and
-          visualizations forvarious purposes. Informed by the design space, we
-          present VisCommentator that facilitates the creation of augmented
-          videos fortable tennis with data insights and visualizations
-          recommendations. A user study with seven domain experts confirms the
-          usefulnessand effectiveness of the system. Another study with sports
-          fans found the resulting videos informative and engaging.
-        </p>
-      </section>
 
-      <hr />
-      <section id="examples" class="examples">
-        <h2>Examples</h2>
-        <!-- <figure
-              style="text-align: center; width: 60%; margin: 0 auto 20px auto"
-            >
-              <img src="figs/41_architecture.png" alt="missing" />
-            <figcaption>The complete architecture of our model that can parse both global and local information simultaneously.</figcaption> 
-            </figure>-->
+    <section id="abstract" class="abstract">
+    <h2>Abstract</h2>
+    <p>
+        Augmenting sports videos with data visualizations is gaining traction
+        given its ability to communicate insights and explicate
+        playerstrategies engagingly. However, creating such augmented videos
+        is challenging, as it requires considerable domain expertise in
+        sportsanalytics and video editing skills. To ease the creation
+        process, we present a design space to characterize augmented sports
+        videosat element- (<em>what are the constituents</em>) and clip-levels
+        (<em>how the constituents are organized</em>) by systematically
+        reviewing 233 examplescollected from TV channels, teams, and leagues.
+        The design space provides guidance for selecting data insights and
+        visualizations forvarious purposes. Informed by the design space, we
+        present VisCommentator that facilitates the creation of augmented
+        videos fortable tennis with data insights and visualizations
+        recommendations. A user study with seven domain experts confirms the
+        usefulnessand effectiveness of the system. Another study with sports
+        fans found the resulting videos informative and engaging.
+    </p>
+    </section>
 
-        <video src="videos/demo0.mp4" controls></video>
-        <div id="examples_demo" class="gallary"></div>
-      </section>
-
-      <hr />
-      <section id="section1" class="section1">
-        <h2>section1</h2>
-        <figure
-          style="text-align: center; width: 60%; margin: 0 auto 20px auto"
+    <hr />
+    <section id="examples" class="examples">
+    <h2>Examples</h2>
+    <!-- <figure
+            style="text-align: center; width: 60%; margin: 0 auto 20px auto"
         >
-          <img src="figs/logo.jpg" alt="missing" />
-          <!-- <figcaption>The complete architecture of our model that can parse both global and local information simultaneously.</figcaption> -->
-        </figure>
-      </section>
+            <img src="figs/41_architecture.png" alt="missing" />
+        <figcaption>The complete architecture of our model that can parse both global and local information simultaneously.</figcaption> 
+        </figure>-->
 
-      <hr />
-      <section id="section2" class="section1">
+    <video src="videos/demo0.mp4" controls></video>
+    <div id="examples_demo" class="gallary"></div>
+    </section>
+
+    <hr />
+    <section id="section1" class="section1">
+    <h2>section1</h2>
+    <figure
+        style="text-align: center; width: 60%; margin: 0 auto 20px auto"
+    >
+        <img src="figs/logo.jpg" alt="missing" />
+        <!-- <figcaption>The complete architecture of our model that can parse both global and local information simultaneously.</figcaption> -->
+    </figure>
+    </section>
+
+    <hr />
+    <section id="section2" class="section1">
         <h2>Corpus</h2>
         <div class="filter-selector-group">
           <select
@@ -115,7 +114,1507 @@
         <div id="empty_tip">No Video</div>
         <div id="video_pagination" class="pagination"></div>
         <div class="clearfix"></div>
-      </section>
+    </section>
+
+    <hr />
+    <section id="section3" class="section1">
+        <h2>Design Space</h2>
+        <figure style="text-align: center;
+        width: 90%;
+        margin: 0 auto 20px auto;">
+            <img src="figs/DesignSpace_small.jpg" alt="missing">
+            <figurecaption>
+                Fig. 4. A clip-level design space for augmented sports videos: Data Level (vertical) and Narrative Order (horizontal). The number in cells depict their combination occurrences in our corpus. Darker cells mean more occurrences. The last row and column present the ratio of each option to its dimension.
+            </figurecaption>
+        </figure>
+        <br>
+        
+        <div align="center">
+
+        <h1 style="color:black;font-family:Calibri;font-size:14.0pt;font-weight:800;
+        font-style:normal">DesignSpaceLarge</h1>
+        <div id="table-wrapper" style="width:635pt">
+            <div id="table-scroll">
+        <table id="DesignSpaceLarge" border="0" cellpadding="0" cellspacing="0" width="836" style="border-collapse:
+            collapse;table-layout:fixed;width:625pt">
+            <colgroup><col width="98" style="mso-width-source:userset;mso-width-alt:3301;width:74pt">
+            <col width="67" style="width:50pt">
+            <col width="135" style="mso-width-source:userset;mso-width-alt:4554;width:101pt">
+            <col width="67" span="8" style="width:50pt">
+            </colgroup><tbody><tr height="20" style="height:14.7pt">
+            <td height="20" class="xl8014651" width="98" style="height:14.7pt;width:74pt">Narrative</td>
+            <td class="xl8014651" width="67" style="border-left:none;width:50pt">Data Level</td>
+            <td class="xl8014651" width="135" style="border-left:none;width:101pt">Data Type</td>
+            <td class="xl8014651" width="67" style="border-left:none;width:50pt">point</td>
+            <td class="xl8014651" width="67" style="border-left:none;width:50pt">line</td>
+            <td class="xl6314651" width="67" style="width:50pt">area</td>
+            <td class="xl8114651" width="67" style="width:50pt">glyph</td>
+            <td class="xl8114651" width="67" style="width:50pt">label</td>
+            <td class="xl8114651" width="67" style="width:50pt">content</td>
+            <td class="xl8114651" width="67" style="width:50pt">progress</td>
+            <td class="xl8014651" width="67" style="width:50pt">camera</td>
+            </tr>
+            <tr height="19" style="height:14.4pt">
+            <td rowspan="12" height="230" class="xl6714651" style="border-bottom:1.0pt solid black;
+            height:173.4pt;border-top:none">Linear</td>
+            <td rowspan="8" class="xl6714651" style="border-bottom:1.0pt solid black;
+            border-top:none">event</td>
+            <td class="xl7014651" style="border-top:none;border-left:none">kinematics</td>
+            <td class="xl7314651" align="right" style="border-top:none 1.0pt solid windowtext;
+            border-right:none;border-bottom:none;border-left:none;background:#63BE7B;
+            mso-pattern:black none">484</td>
+            <td class="xl7314651" align="right" style="border-top:none 1.0pt solid windowtext;
+            border-right:none;border-bottom:none;border-left:none;background:#B6E0C3;
+            mso-pattern:black none">223</td>
+            <td class="xl7314651" align="right" style="border-top:none 1.0pt solid windowtext;
+            border-right:none;border-bottom:none;border-left:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl7314651" align="right" style="border-top:none 1.0pt solid windowtext;
+            border-right:none;border-bottom:none;border-left:none;background:#E2F2E9;
+            mso-pattern:black none">83</td>
+            <td class="xl7314651" align="right" style="border-top:none 1.0pt solid windowtext;
+            border-right:none;border-bottom:none;border-left:none;background:#F6FAFA;
+            mso-pattern:black none">20</td>
+            <td class="xl7314651" align="right" style="border-top:none 1.0pt solid windowtext;
+            border-right:none;border-bottom:none;border-left:none;background:#F9FBFC;
+            mso-pattern:black none">11</td>
+            <td class="xl7314651" align="right" style="border-top:none 1.0pt solid windowtext;
+            border-right:none;border-bottom:none;border-left:none;background:#F8FBFB;
+            mso-pattern:black none">15</td>
+            <td class="xl7414651" align="right" style="border-top:none 1.0pt solid windowtext;
+            border-right:1.0pt solid windowtext;border-bottom:none;border-left:none;
+            background:#F6FAFA;mso-pattern:black none">19</td>
+            </tr>
+            <tr height="19" style="height:14.4pt">
+            <td height="19" class="xl7114651" style="height:14.4pt;border-left:none">playerdistance</td>
+            <td class="xl7514651" align="right" style="border-left:none;border-top:none;
+            border-right:none;border-bottom:none;border-left:1.0pt solid windowtext;
+            background:#FCFCFF;mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#E5F3EC;
+            mso-pattern:black none">73</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">3</td>
+            <td class="xl1514651" align="right" style="border:none;background:#E7F4ED;
+            mso-pattern:black none">67</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl7614651" align="right" style="border-top:none;border-right:1.0pt solid windowtext;
+            border-bottom:none;border-left:none;background:#FCFCFF;mso-pattern:black none">1</td>
+            </tr>
+            <tr height="19" style="height:14.4pt">
+            <td height="19" class="xl7114651" style="height:14.4pt;border-left:none">playerarea</td>
+            <td class="xl7514651" align="right" style="border-left:none;border-top:none;
+            border-right:none;border-bottom:none;border-left:1.0pt solid windowtext;
+            background:#FCFCFF;mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#F0F8F5;
+            mso-pattern:black none">39</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl7614651" align="right" style="border-top:none;border-right:1.0pt solid windowtext;
+            border-bottom:none;border-left:none;background:#FCFCFF;mso-pattern:black none">0</td>
+            </tr>
+            <tr height="19" style="height:14.4pt">
+            <td height="19" class="xl7114651" style="height:14.4pt;border-left:none">playertext</td>
+            <td class="xl7514651" align="right" style="border-left:none;border-top:none;
+            border-right:none;border-bottom:none;border-left:1.0pt solid windowtext;
+            background:#FCFCFF;mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#DBEFE2;
+            mso-pattern:black none">107</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl7614651" align="right" style="border-top:none;border-right:1.0pt solid windowtext;
+            border-bottom:none;border-left:none;background:#FCFCFF;mso-pattern:black none">0</td>
+            </tr>
+            <tr height="19" style="height:14.4pt">
+            <td height="19" class="xl7114651" style="height:14.4pt;border-left:none">courtarea</td>
+            <td class="xl7514651" align="right" style="border-left:none;border-top:none;
+            border-right:none;border-bottom:none;border-left:1.0pt solid windowtext;
+            background:#FCFCFF;mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FAFBFD;
+            mso-pattern:black none">8</td>
+            <td class="xl1514651" align="right" style="border:none;background:#E9F4EE;
+            mso-pattern:black none">63</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FBFCFE;
+            mso-pattern:black none">4</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl7614651" align="right" style="border-top:none;border-right:1.0pt solid windowtext;
+            border-bottom:none;border-left:none;background:#FCFCFF;mso-pattern:black none">0</td>
+            </tr>
+            <tr height="19" style="height:14.4pt">
+            <td height="19" class="xl7114651" style="height:14.4pt;border-left:none">playeraction</td>
+            <td class="xl7514651" align="right" style="border-left:none;border-top:none;
+            border-right:none;border-bottom:none;border-left:1.0pt solid windowtext;
+            background:#F9FBFC;mso-pattern:black none">11</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">2</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#E2F2E8;
+            mso-pattern:black none">85</td>
+            <td class="xl1514651" align="right" style="border:none;background:#C5E6CF;
+            mso-pattern:black none">177</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">2</td>
+            <td class="xl1514651" align="right" style="border:none;background:#6BC182;
+            mso-pattern:black none">461</td>
+            <td class="xl7614651" align="right" style="border-top:none;border-right:1.0pt solid windowtext;
+            border-bottom:none;border-left:none;background:#E7F4ED;mso-pattern:black none">67</td>
+            </tr>
+            <tr height="19" style="height:14.4pt">
+            <td height="19" class="xl7114651" style="height:14.4pt;border-left:none">playerformation</td>
+            <td class="xl7514651" align="right" style="border-left:none;border-top:none;
+            border-right:none;border-bottom:none;border-left:1.0pt solid windowtext;
+            background:#FCFCFF;mso-pattern:black none">3</td>
+            <td class="xl1514651" align="right" style="border:none;background:#E8F4ED;
+            mso-pattern:black none">66</td>
+            <td class="xl1514651" align="right" style="border:none;background:#F6FAFA;
+            mso-pattern:black none">20</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FBFCFE;
+            mso-pattern:black none">6</td>
+            <td class="xl1514651" align="right" style="border:none;background:#F6FAFA;
+            mso-pattern:black none">21</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FAFBFD;
+            mso-pattern:black none">9</td>
+            <td class="xl7614651" align="right" style="border-top:none;border-right:1.0pt solid windowtext;
+            border-bottom:none;border-left:none;background:#FCFCFF;mso-pattern:black none">1</td>
+            </tr>
+            <tr height="20" style="height:14.7pt">
+            <td height="20" class="xl7214651" style="height:14.7pt;border-left:none">ballevent</td>
+            <td class="xl7714651" align="right" style="border-left:none;border-top:none;
+            border-right:none;border-bottom:1.0pt solid windowtext;border-left:1.0pt solid windowtext;
+            background:#EDF6F2;mso-pattern:black none">50</td>
+            <td class="xl7814651" align="right" style="border-top:none;border-right:none;
+            border-bottom:1.0pt solid windowtext;border-left:none;background:#F8FBFB;
+            mso-pattern:black none">15</td>
+            <td class="xl7814651" align="right" style="border-top:none;border-right:none;
+            border-bottom:1.0pt solid windowtext;border-left:none;background:#F8FBFB;
+            mso-pattern:black none">15</td>
+            <td class="xl7814651" align="right" style="border-top:none;border-right:none;
+            border-bottom:1.0pt solid windowtext;border-left:none;background:#F9FBFC;
+            mso-pattern:black none">12</td>
+            <td class="xl7814651" align="right" style="border-top:none;border-right:none;
+            border-bottom:1.0pt solid windowtext;border-left:none;background:#FCFCFF;
+            mso-pattern:black none">3</td>
+            <td class="xl7814651" align="right" style="border-top:none;border-right:none;
+            border-bottom:1.0pt solid windowtext;border-left:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl7814651" align="right" style="border-top:none;border-right:none;
+            border-bottom:1.0pt solid windowtext;border-left:none;background:#FAFCFE;
+            mso-pattern:black none">7</td>
+            <td class="xl7914651" align="right" style="border-top:none;border-right:1.0pt solid windowtext;
+            border-bottom:1.0pt solid windowtext;border-left:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            </tr>
+            <tr height="19" style="height:14.4pt">
+            <td rowspan="4" height="77" class="xl6714651" style="border-bottom:1.0pt solid black;
+            height:57.9pt;border-top:none">object</td>
+            <td class="xl7114651" style="border-left:none">kinematics</td>
+            <td class="xl7514651" align="right" style="border-left:none;border-top:none;
+            border-right:none;border-bottom:none;border-left:1.0pt solid windowtext;
+            background:#EEF7F3;mso-pattern:black none">45</td>
+            <td class="xl1514651" align="right" style="border:none;background:#F7FAFB;
+            mso-pattern:black none">16</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FBFCFE;
+            mso-pattern:black none">4</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">3</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">2</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">2</td>
+            <td class="xl7614651" align="right" style="border-top:none;border-right:1.0pt solid windowtext;
+            border-bottom:none;border-left:none;background:#FCFCFF;mso-pattern:black none">1</td>
+            </tr>
+            <tr height="19" style="height:14.4pt">
+            <td height="19" class="xl7114651" style="height:14.4pt;border-left:none">playerdistance</td>
+            <td class="xl7514651" align="right" style="border-left:none;border-top:none;
+            border-right:none;border-bottom:none;border-left:1.0pt solid windowtext;
+            background:#FCFCFF;mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">1</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FAFBFD;
+            mso-pattern:black none">8</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl7614651" align="right" style="border-top:none;border-right:1.0pt solid windowtext;
+            border-bottom:none;border-left:none;background:#FCFCFF;mso-pattern:black none">0</td>
+            </tr>
+            <tr height="19" style="height:14.4pt">
+            <td height="19" class="xl7114651" style="height:14.4pt;border-left:none">playerarea</td>
+            <td class="xl7514651" align="right" style="border-left:none;border-top:none;
+            border-right:none;border-bottom:none;border-left:1.0pt solid windowtext;
+            background:#FCFCFF;mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">1</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FAFCFE;
+            mso-pattern:black none">7</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl7614651" align="right" style="border-top:none;border-right:1.0pt solid windowtext;
+            border-bottom:none;border-left:none;background:#FCFCFF;mso-pattern:black none">1</td>
+            </tr>
+            <tr height="20" style="height:14.7pt">
+            <td height="20" class="xl7214651" style="height:14.7pt;border-left:none">playertext</td>
+            <td class="xl7714651" align="right" style="border-left:none;border-top:none;
+            border-right:none;border-bottom:1.0pt solid windowtext;border-left:1.0pt solid windowtext;
+            background:#FCFCFF;mso-pattern:black none">0</td>
+            <td class="xl7814651" align="right" style="border-top:none;border-right:none;
+            border-bottom:1.0pt solid windowtext;border-left:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl7814651" align="right" style="border-top:none;border-right:none;
+            border-bottom:1.0pt solid windowtext;border-left:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl7814651" align="right" style="border-top:none;border-right:none;
+            border-bottom:1.0pt solid windowtext;border-left:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl7814651" align="right" style="border-top:none;border-right:none;
+            border-bottom:1.0pt solid windowtext;border-left:none;background:#F9FBFC;
+            mso-pattern:black none">12</td>
+            <td class="xl7814651" align="right" style="border-top:none;border-right:none;
+            border-bottom:1.0pt solid windowtext;border-left:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl7814651" align="right" style="border-top:none;border-right:none;
+            border-bottom:1.0pt solid windowtext;border-left:none;background:#FCFCFF;
+            mso-pattern:black none">1</td>
+            <td class="xl7914651" align="right" style="border-top:none;border-right:1.0pt solid windowtext;
+            border-bottom:1.0pt solid windowtext;border-left:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            </tr>
+            <tr height="19" style="height:14.4pt">
+            <td rowspan="11" height="211" class="xl6714651" style="border-bottom:1.0pt solid black;
+            height:159.0pt;border-top:none">Flash Forward</td>
+            <td rowspan="8" class="xl6414651" style="border-bottom:1.0pt solid black;
+            border-top:none">event</td>
+            <td class="xl7114651" style="border-left:none">kinematics</td>
+            <td class="xl7514651" align="right" style="border-left:none;border-top:none;
+            border-right:none;border-bottom:none;border-left:1.0pt solid windowtext;
+            background:#BBE2C7;mso-pattern:black none">208</td>
+            <td class="xl1514651" align="right" style="border:none;background:#B4DFC1;
+            mso-pattern:black none">230</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#F5F9F9;
+            mso-pattern:black none">24</td>
+            <td class="xl1514651" align="right" style="border:none;background:#F9FBFC;
+            mso-pattern:black none">12</td>
+            <td class="xl1514651" align="right" style="border:none;background:#E4F3EA;
+            mso-pattern:black none">77</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FBFCFE;
+            mso-pattern:black none">6</td>
+            <td class="xl7614651" align="right" style="border-top:none;border-right:1.0pt solid windowtext;
+            border-bottom:none;border-left:none;background:#FAFBFD;mso-pattern:black none">8</td>
+            </tr>
+            <tr height="19" style="height:14.4pt">
+            <td height="19" class="xl7114651" style="height:14.4pt;border-left:none">playerdistance</td>
+            <td class="xl7514651" align="right" style="border-left:none;border-top:none;
+            border-right:none;border-bottom:none;border-left:1.0pt solid windowtext;
+            background:#FCFCFF;mso-pattern:black none">1</td>
+            <td class="xl1514651" align="right" style="border:none;background:#F0F7F5;
+            mso-pattern:black none">40</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">1</td>
+            <td class="xl1514651" align="right" style="border:none;background:#EEF7F3;
+            mso-pattern:black none">45</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl7614651" align="right" style="border-top:none;border-right:1.0pt solid windowtext;
+            border-bottom:none;border-left:none;background:#FCFCFF;mso-pattern:black none">0</td>
+            </tr>
+            <tr height="19" style="height:14.4pt">
+            <td height="19" class="xl7114651" style="height:14.4pt;border-left:none">playerarea</td>
+            <td class="xl7514651" align="right" style="border-left:none;border-top:none;
+            border-right:none;border-bottom:none;border-left:1.0pt solid windowtext;
+            background:#FCFCFF;mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#F6FAF9;
+            mso-pattern:black none">22</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl7614651" align="right" style="border-top:none;border-right:1.0pt solid windowtext;
+            border-bottom:none;border-left:none;background:#FCFCFF;mso-pattern:black none">0</td>
+            </tr>
+            <tr height="19" style="height:14.4pt">
+            <td height="19" class="xl7114651" style="height:14.4pt;border-left:none">playertext</td>
+            <td class="xl7514651" align="right" style="border-left:none;border-top:none;
+            border-right:none;border-bottom:none;border-left:1.0pt solid windowtext;
+            background:#FCFCFF;mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#F7FAFB;
+            mso-pattern:black none">16</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl7614651" align="right" style="border-top:none;border-right:1.0pt solid windowtext;
+            border-bottom:none;border-left:none;background:#FCFCFF;mso-pattern:black none">0</td>
+            </tr>
+            <tr height="19" style="height:14.4pt">
+            <td height="19" class="xl7114651" style="height:14.4pt;border-left:none">courtarea</td>
+            <td class="xl7514651" align="right" style="border-left:none;border-top:none;
+            border-right:none;border-bottom:none;border-left:1.0pt solid windowtext;
+            background:#FCFCFF;mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">3</td>
+            <td class="xl1514651" align="right" style="border:none;background:#F5F9F9;
+            mso-pattern:black none">24</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">1</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">1</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl7614651" align="right" style="border-top:none;border-right:1.0pt solid windowtext;
+            border-bottom:none;border-left:none;background:#FCFCFF;mso-pattern:black none">0</td>
+            </tr>
+            <tr height="19" style="height:14.4pt">
+            <td height="19" class="xl7114651" style="height:14.4pt;border-left:none">playeraction</td>
+            <td class="xl7514651" align="right" style="border-left:none;border-top:none;
+            border-right:none;border-bottom:none;border-left:1.0pt solid windowtext;
+            background:#FCFCFF;mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">1</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#F5FAF9;
+            mso-pattern:black none">23</td>
+            <td class="xl1514651" align="right" style="border:none;background:#EFF7F3;
+            mso-pattern:black none">44</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FBFCFE;
+            mso-pattern:black none">5</td>
+            <td class="xl1514651" align="right" style="border:none;background:#B6E0C3;
+            mso-pattern:black none">222</td>
+            <td class="xl7614651" align="right" style="border-top:none;border-right:1.0pt solid windowtext;
+            border-bottom:none;border-left:none;background:#F6FAF9;mso-pattern:black none">22</td>
+            </tr>
+            <tr height="19" style="height:14.4pt">
+            <td height="19" class="xl7114651" style="height:14.4pt;border-left:none">playerformation</td>
+            <td class="xl7514651" align="right" style="border-left:none;border-top:none;
+            border-right:none;border-bottom:none;border-left:1.0pt solid windowtext;
+            background:#FCFCFF;mso-pattern:black none">1</td>
+            <td class="xl1514651" align="right" style="border:none;background:#F6FAFA;
+            mso-pattern:black none">19</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FBFCFE;
+            mso-pattern:black none">5</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">1</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FAFBFD;
+            mso-pattern:black none">8</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">3</td>
+            <td class="xl7614651" align="right" style="border-top:none;border-right:1.0pt solid windowtext;
+            border-bottom:none;border-left:none;background:#FCFCFF;mso-pattern:black none">0</td>
+            </tr>
+            <tr height="20" style="height:14.7pt">
+            <td height="20" class="xl7214651" style="height:14.7pt;border-left:none">ballevent</td>
+            <td class="xl7714651" align="right" style="border-left:none;border-top:none;
+            border-right:none;border-bottom:1.0pt solid windowtext;border-left:1.0pt solid windowtext;
+            background:#E7F4ED;mso-pattern:black none">69</td>
+            <td class="xl7814651" align="right" style="border-top:none;border-right:none;
+            border-bottom:1.0pt solid windowtext;border-left:none;background:#F9FBFD;
+            mso-pattern:black none">10</td>
+            <td class="xl7814651" align="right" style="border-top:none;border-right:none;
+            border-bottom:1.0pt solid windowtext;border-left:none;background:#ECF6F2;
+            mso-pattern:black none">51</td>
+            <td class="xl7814651" align="right" style="border-top:none;border-right:none;
+            border-bottom:1.0pt solid windowtext;border-left:none;background:#FCFCFF;
+            mso-pattern:black none">3</td>
+            <td class="xl7814651" align="right" style="border-top:none;border-right:none;
+            border-bottom:1.0pt solid windowtext;border-left:none;background:#FAFBFD;
+            mso-pattern:black none">8</td>
+            <td class="xl7814651" align="right" style="border-top:none;border-right:none;
+            border-bottom:1.0pt solid windowtext;border-left:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl7814651" align="right" style="border-top:none;border-right:none;
+            border-bottom:1.0pt solid windowtext;border-left:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl7914651" align="right" style="border-top:none;border-right:1.0pt solid windowtext;
+            border-bottom:1.0pt solid windowtext;border-left:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            </tr>
+            <tr height="19" style="height:14.4pt">
+            <td rowspan="3" height="58" class="xl6714651" style="border-bottom:1.0pt solid black;
+            height:43.5pt;border-top:none">object</td>
+            <td class="xl7114651" style="border-left:none">kinematics</td>
+            <td class="xl7514651" align="right" style="border-left:none;border-top:none;
+            border-right:none;border-bottom:none;border-left:1.0pt solid windowtext;
+            background:#F9FBFC;mso-pattern:black none">12</td>
+            <td class="xl1514651" align="right" style="border:none;background:#F8FBFC;
+            mso-pattern:black none">13</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FBFCFE;
+            mso-pattern:black none">6</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl7614651" align="right" style="border-top:none;border-right:1.0pt solid windowtext;
+            border-bottom:none;border-left:none;background:#FCFCFF;mso-pattern:black none">0</td>
+            </tr>
+            <tr height="19" style="height:14.4pt">
+            <td height="19" class="xl7114651" style="height:14.4pt;border-left:none">playerarea</td>
+            <td class="xl7514651" align="right" style="border-left:none;border-top:none;
+            border-right:none;border-bottom:none;border-left:1.0pt solid windowtext;
+            background:#FCFCFF;mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">1</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl7614651" align="right" style="border-top:none;border-right:1.0pt solid windowtext;
+            border-bottom:none;border-left:none;background:#FCFCFF;mso-pattern:black none">0</td>
+            </tr>
+            <tr height="20" style="height:14.7pt">
+            <td height="20" class="xl7214651" style="height:14.7pt;border-left:none">playertext</td>
+            <td class="xl7714651" align="right" style="border-left:none;border-top:none;
+            border-right:none;border-bottom:1.0pt solid windowtext;border-left:1.0pt solid windowtext;
+            background:#FCFCFF;mso-pattern:black none">0</td>
+            <td class="xl7814651" align="right" style="border-top:none;border-right:none;
+            border-bottom:1.0pt solid windowtext;border-left:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl7814651" align="right" style="border-top:none;border-right:none;
+            border-bottom:1.0pt solid windowtext;border-left:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl7814651" align="right" style="border-top:none;border-right:none;
+            border-bottom:1.0pt solid windowtext;border-left:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl7814651" align="right" style="border-top:none;border-right:none;
+            border-bottom:1.0pt solid windowtext;border-left:none;background:#FCFCFF;
+            mso-pattern:black none">1</td>
+            <td class="xl7814651" align="right" style="border-top:none;border-right:none;
+            border-bottom:1.0pt solid windowtext;border-left:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl7814651" align="right" style="border-top:none;border-right:none;
+            border-bottom:1.0pt solid windowtext;border-left:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl7914651" align="right" style="border-top:none;border-right:1.0pt solid windowtext;
+            border-bottom:1.0pt solid windowtext;border-left:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            </tr>
+            <tr height="19" style="height:14.4pt">
+            <td rowspan="10" height="192" class="xl6714651" style="border-bottom:1.0pt solid black;
+            height:144.6pt;border-top:none">Flash Backward</td>
+            <td rowspan="8" class="xl6414651" style="border-bottom:1.0pt solid black;
+            border-top:none">event</td>
+            <td class="xl7114651" style="border-left:none">kinematics</td>
+            <td class="xl7514651" align="right" style="border-left:none;border-top:none;
+            border-right:none;border-bottom:none;border-left:1.0pt solid windowtext;
+            background:#F2F8F6;mso-pattern:black none">34</td>
+            <td class="xl1514651" align="right" style="border:none;background:#F3F9F8;
+            mso-pattern:black none">29</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FAFBFD;
+            mso-pattern:black none">9</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">1</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FBFCFE;
+            mso-pattern:black none">6</td>
+            <td class="xl7614651" align="right" style="border-top:none;border-right:1.0pt solid windowtext;
+            border-bottom:none;border-left:none;background:#FCFCFF;mso-pattern:black none">0</td>
+            </tr>
+            <tr height="19" style="height:14.4pt">
+            <td height="19" class="xl7114651" style="height:14.4pt;border-left:none">playerdistance</td>
+            <td class="xl7514651" align="right" style="border-left:none;border-top:none;
+            border-right:none;border-bottom:none;border-left:1.0pt solid windowtext;
+            background:#FCFCFF;mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">2</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl7614651" align="right" style="border-top:none;border-right:1.0pt solid windowtext;
+            border-bottom:none;border-left:none;background:#FCFCFF;mso-pattern:black none">0</td>
+            </tr>
+            <tr height="19" style="height:14.4pt">
+            <td height="19" class="xl7114651" style="height:14.4pt;border-left:none">playerarea</td>
+            <td class="xl7514651" align="right" style="border-left:none;border-top:none;
+            border-right:none;border-bottom:none;border-left:1.0pt solid windowtext;
+            background:#FCFCFF;mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FBFCFE;
+            mso-pattern:black none">4</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl7614651" align="right" style="border-top:none;border-right:1.0pt solid windowtext;
+            border-bottom:none;border-left:none;background:#FCFCFF;mso-pattern:black none">0</td>
+            </tr>
+            <tr height="19" style="height:14.4pt">
+            <td height="19" class="xl7114651" style="height:14.4pt;border-left:none">playertext</td>
+            <td class="xl7514651" align="right" style="border-left:none;border-top:none;
+            border-right:none;border-bottom:none;border-left:1.0pt solid windowtext;
+            background:#FCFCFF;mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FBFCFE;
+            mso-pattern:black none">6</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl7614651" align="right" style="border-top:none;border-right:1.0pt solid windowtext;
+            border-bottom:none;border-left:none;background:#FCFCFF;mso-pattern:black none">0</td>
+            </tr>
+            <tr height="19" style="height:14.4pt">
+            <td height="19" class="xl7114651" style="height:14.4pt;border-left:none">courtarea</td>
+            <td class="xl7514651" align="right" style="border-left:none;border-top:none;
+            border-right:none;border-bottom:none;border-left:1.0pt solid windowtext;
+            background:#FCFCFF;mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">3</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl7614651" align="right" style="border-top:none;border-right:1.0pt solid windowtext;
+            border-bottom:none;border-left:none;background:#FCFCFF;mso-pattern:black none">0</td>
+            </tr>
+            <tr height="19" style="height:14.4pt">
+            <td height="19" class="xl7114651" style="height:14.4pt;border-left:none">playeraction</td>
+            <td class="xl7514651" align="right" style="border-left:none;border-top:none;
+            border-right:none;border-bottom:none;border-left:1.0pt solid windowtext;
+            background:#FCFCFF;mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">1</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FBFCFE;
+            mso-pattern:black none">5</td>
+            <td class="xl1514651" align="right" style="border:none;background:#F9FBFC;
+            mso-pattern:black none">11</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#DBEFE3;
+            mso-pattern:black none">106</td>
+            <td class="xl7614651" align="right" style="border-top:none;border-right:1.0pt solid windowtext;
+            border-bottom:none;border-left:none;background:#F6FAFA;mso-pattern:black none">20</td>
+            </tr>
+            <tr height="19" style="height:14.4pt">
+            <td height="19" class="xl7114651" style="height:14.4pt;border-left:none">playerformation</td>
+            <td class="xl7514651" align="right" style="border-left:none;border-top:none;
+            border-right:none;border-bottom:none;border-left:1.0pt solid windowtext;
+            background:#FCFCFF;mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">3</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl7614651" align="right" style="border-top:none;border-right:1.0pt solid windowtext;
+            border-bottom:none;border-left:none;background:#FCFCFF;mso-pattern:black none">0</td>
+            </tr>
+            <tr height="20" style="height:14.7pt">
+            <td height="20" class="xl7214651" style="height:14.7pt;border-left:none">ballevent</td>
+            <td class="xl7714651" align="right" style="border-left:none;border-top:none;
+            border-right:none;border-bottom:1.0pt solid windowtext;border-left:1.0pt solid windowtext;
+            background:#FBFCFE;mso-pattern:black none">5</td>
+            <td class="xl7814651" align="right" style="border-top:none;border-right:none;
+            border-bottom:1.0pt solid windowtext;border-left:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl7814651" align="right" style="border-top:none;border-right:none;
+            border-bottom:1.0pt solid windowtext;border-left:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl7814651" align="right" style="border-top:none;border-right:none;
+            border-bottom:1.0pt solid windowtext;border-left:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl7814651" align="right" style="border-top:none;border-right:none;
+            border-bottom:1.0pt solid windowtext;border-left:none;background:#FBFCFE;
+            mso-pattern:black none">4</td>
+            <td class="xl7814651" align="right" style="border-top:none;border-right:none;
+            border-bottom:1.0pt solid windowtext;border-left:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl7814651" align="right" style="border-top:none;border-right:none;
+            border-bottom:1.0pt solid windowtext;border-left:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl7914651" align="right" style="border-top:none;border-right:1.0pt solid windowtext;
+            border-bottom:1.0pt solid windowtext;border-left:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            </tr>
+            <tr height="19" style="height:14.4pt">
+            <td rowspan="2" height="39" class="xl6714651" style="border-bottom:1.0pt solid black;
+            height:29.1pt;border-top:none">object</td>
+            <td class="xl7114651" style="border-left:none">kinematics</td>
+            <td class="xl7514651" align="right" style="border-left:none;border-top:none;
+            border-right:none;border-bottom:none;border-left:1.0pt solid windowtext;
+            background:#FCFCFF;mso-pattern:black none">1</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">1</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl7614651" align="right" style="border-top:none;border-right:1.0pt solid windowtext;
+            border-bottom:none;border-left:none;background:#FCFCFF;mso-pattern:black none">0</td>
+            </tr>
+            <tr height="20" style="height:14.7pt">
+            <td height="20" class="xl7214651" style="height:14.7pt;border-left:none">playerarea</td>
+            <td class="xl7714651" align="right" style="border-left:none;border-top:none;
+            border-right:none;border-bottom:1.0pt solid windowtext;border-left:1.0pt solid windowtext;
+            background:#FCFCFF;mso-pattern:black none">0</td>
+            <td class="xl7814651" align="right" style="border-top:none;border-right:none;
+            border-bottom:1.0pt solid windowtext;border-left:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl7814651" align="right" style="border-top:none;border-right:none;
+            border-bottom:1.0pt solid windowtext;border-left:none;background:#FCFCFF;
+            mso-pattern:black none">2</td>
+            <td class="xl7814651" align="right" style="border-top:none;border-right:none;
+            border-bottom:1.0pt solid windowtext;border-left:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl7814651" align="right" style="border-top:none;border-right:none;
+            border-bottom:1.0pt solid windowtext;border-left:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl7814651" align="right" style="border-top:none;border-right:none;
+            border-bottom:1.0pt solid windowtext;border-left:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl7814651" align="right" style="border-top:none;border-right:none;
+            border-bottom:1.0pt solid windowtext;border-left:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl7914651" align="right" style="border-top:none;border-right:1.0pt solid windowtext;
+            border-bottom:1.0pt solid windowtext;border-left:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            </tr>
+            <tr height="19" style="height:14.4pt">
+            <td rowspan="8" height="153" class="xl6714651" style="border-bottom:1.0pt solid black;
+            height:115.5pt;border-top:none">ZigZag</td>
+            <td rowspan="8" class="xl6714651" style="border-bottom:1.0pt solid black;
+            border-top:none">event</td>
+            <td class="xl7114651" style="border-left:none">kinematics</td>
+            <td class="xl7514651" align="right" style="border-left:none;border-top:none;
+            border-right:none;border-bottom:none;border-left:1.0pt solid windowtext;
+            background:#D4ECDC;mso-pattern:black none">129</td>
+            <td class="xl1514651" align="right" style="border:none;background:#F3F9F7;
+            mso-pattern:black none">31</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FAFBFD;
+            mso-pattern:black none">9</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">2</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FBFCFE;
+            mso-pattern:black none">4</td>
+            <td class="xl7614651" align="right" style="border-top:none;border-right:1.0pt solid windowtext;
+            border-bottom:none;border-left:none;background:#FCFCFF;mso-pattern:black none">1</td>
+            </tr>
+            <tr height="19" style="height:14.4pt">
+            <td height="19" class="xl7114651" style="height:14.4pt;border-left:none">playerdistance</td>
+            <td class="xl7514651" align="right" style="border-left:none;border-top:none;
+            border-right:none;border-bottom:none;border-left:1.0pt solid windowtext;
+            background:#FCFCFF;mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">2</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">1</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl7614651" align="right" style="border-top:none;border-right:1.0pt solid windowtext;
+            border-bottom:none;border-left:none;background:#FCFCFF;mso-pattern:black none">0</td>
+            </tr>
+            <tr height="19" style="height:14.4pt">
+            <td height="19" class="xl7114651" style="height:14.4pt;border-left:none">playerarea</td>
+            <td class="xl7514651" align="right" style="border-left:none;border-top:none;
+            border-right:none;border-bottom:none;border-left:1.0pt solid windowtext;
+            background:#FCFCFF;mso-pattern:black none">1</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#F8FBFC;
+            mso-pattern:black none">13</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl7614651" align="right" style="border-top:none;border-right:1.0pt solid windowtext;
+            border-bottom:none;border-left:none;background:#FCFCFF;mso-pattern:black none">0</td>
+            </tr>
+            <tr height="19" style="height:14.4pt">
+            <td height="19" class="xl7114651" style="height:14.4pt;border-left:none">playertext</td>
+            <td class="xl7514651" align="right" style="border-left:none;border-top:none;
+            border-right:none;border-bottom:none;border-left:1.0pt solid windowtext;
+            background:#FCFCFF;mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FBFCFE;
+            mso-pattern:black none">6</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl7614651" align="right" style="border-top:none;border-right:1.0pt solid windowtext;
+            border-bottom:none;border-left:none;background:#FCFCFF;mso-pattern:black none">0</td>
+            </tr>
+            <tr height="19" style="height:14.4pt">
+            <td height="19" class="xl7114651" style="height:14.4pt;border-left:none">courtarea</td>
+            <td class="xl7514651" align="right" style="border-left:none;border-top:none;
+            border-right:none;border-bottom:none;border-left:1.0pt solid windowtext;
+            background:#FCFCFF;mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FBFCFE;
+            mso-pattern:black none">5</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FBFCFE;
+            mso-pattern:black none">6</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">1</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl7614651" align="right" style="border-top:none;border-right:1.0pt solid windowtext;
+            border-bottom:none;border-left:none;background:#FCFCFF;mso-pattern:black none">0</td>
+            </tr>
+            <tr height="19" style="height:14.4pt">
+            <td height="19" class="xl7114651" style="height:14.4pt;border-left:none">playeraction</td>
+            <td class="xl7514651" align="right" style="border-left:none;border-top:none;
+            border-right:none;border-bottom:none;border-left:1.0pt solid windowtext;
+            background:#FCFCFF;mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">1</td>
+            <td class="xl1514651" align="right" style="border:none;background:#F6FAF9;
+            mso-pattern:black none">22</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#C3E5CE;
+            mso-pattern:black none">182</td>
+            <td class="xl7614651" align="right" style="border-top:none;border-right:1.0pt solid windowtext;
+            border-bottom:none;border-left:none;background:#F4F9F8;mso-pattern:black none">27</td>
+            </tr>
+            <tr height="19" style="height:14.4pt">
+            <td height="19" class="xl7114651" style="height:14.4pt;border-left:none">playerformation</td>
+            <td class="xl7514651" align="right" style="border-left:none;border-top:none;
+            border-right:none;border-bottom:none;border-left:1.0pt solid windowtext;
+            background:#FCFCFF;mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">3</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">1</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl7614651" align="right" style="border-top:none;border-right:1.0pt solid windowtext;
+            border-bottom:none;border-left:none;background:#FCFCFF;mso-pattern:black none">0</td>
+            </tr>
+            <tr height="20" style="height:14.7pt">
+            <td height="20" class="xl7214651" style="height:14.7pt;border-left:none">ballevent</td>
+            <td class="xl7714651" align="right" style="border-left:none;border-top:none;
+            border-right:none;border-bottom:1.0pt solid windowtext;border-left:1.0pt solid windowtext;
+            background:#FCFCFF;mso-pattern:black none">3</td>
+            <td class="xl7814651" align="right" style="border-top:none;border-right:none;
+            border-bottom:1.0pt solid windowtext;border-left:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl7814651" align="right" style="border-top:none;border-right:none;
+            border-bottom:1.0pt solid windowtext;border-left:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl7814651" align="right" style="border-top:none;border-right:none;
+            border-bottom:1.0pt solid windowtext;border-left:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl7814651" align="right" style="border-top:none;border-right:none;
+            border-bottom:1.0pt solid windowtext;border-left:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl7814651" align="right" style="border-top:none;border-right:none;
+            border-bottom:1.0pt solid windowtext;border-left:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl7814651" align="right" style="border-top:none;border-right:none;
+            border-bottom:1.0pt solid windowtext;border-left:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl7914651" align="right" style="border-top:none;border-right:1.0pt solid windowtext;
+            border-bottom:1.0pt solid windowtext;border-left:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            </tr>
+            <tr height="19" style="height:14.4pt">
+            <td rowspan="8" height="153" class="xl6714651" style="border-bottom:1.0pt solid black;
+            height:115.5pt;border-top:none">Grouped</td>
+            <td rowspan="8" class="xl6714651" style="border-bottom:1.0pt solid black;
+            border-top:none">event</td>
+            <td class="xl7114651" style="border-left:none">kinematics</td>
+            <td class="xl7514651" align="right" style="border-left:none;border-top:none;
+            border-right:none;border-bottom:none;border-left:1.0pt solid windowtext;
+            background:#FAFBFD;mso-pattern:black none">8</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FBFCFE;
+            mso-pattern:black none">6</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">3</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">2</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">1</td>
+            <td class="xl7614651" align="right" style="border-top:none;border-right:1.0pt solid windowtext;
+            border-bottom:none;border-left:none;background:#FCFCFF;mso-pattern:black none">0</td>
+            </tr>
+            <tr height="19" style="height:14.4pt">
+            <td height="19" class="xl7114651" style="height:14.4pt;border-left:none">playerdistance</td>
+            <td class="xl7514651" align="right" style="border-left:none;border-top:none;
+            border-right:none;border-bottom:none;border-left:1.0pt solid windowtext;
+            background:#FCFCFF;mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FBFCFE;
+            mso-pattern:black none">4</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">3</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl7614651" align="right" style="border-top:none;border-right:1.0pt solid windowtext;
+            border-bottom:none;border-left:none;background:#FCFCFF;mso-pattern:black none">0</td>
+            </tr>
+            <tr height="19" style="height:14.4pt">
+            <td height="19" class="xl7114651" style="height:14.4pt;border-left:none">playerarea</td>
+            <td class="xl7514651" align="right" style="border-left:none;border-top:none;
+            border-right:none;border-bottom:none;border-left:1.0pt solid windowtext;
+            background:#FCFCFF;mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl7614651" align="right" style="border-top:none;border-right:1.0pt solid windowtext;
+            border-bottom:none;border-left:none;background:#FCFCFF;mso-pattern:black none">0</td>
+            </tr>
+            <tr height="19" style="height:14.4pt">
+            <td height="19" class="xl7114651" style="height:14.4pt;border-left:none">playertext</td>
+            <td class="xl7514651" align="right" style="border-left:none;border-top:none;
+            border-right:none;border-bottom:none;border-left:1.0pt solid windowtext;
+            background:#FCFCFF;mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">1</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl7614651" align="right" style="border-top:none;border-right:1.0pt solid windowtext;
+            border-bottom:none;border-left:none;background:#FCFCFF;mso-pattern:black none">0</td>
+            </tr>
+            <tr height="19" style="height:14.4pt">
+            <td height="19" class="xl7114651" style="height:14.4pt;border-left:none">courtarea</td>
+            <td class="xl7514651" align="right" style="border-left:none;border-top:none;
+            border-right:none;border-bottom:none;border-left:1.0pt solid windowtext;
+            background:#FCFCFF;mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">1</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">1</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl7614651" align="right" style="border-top:none;border-right:1.0pt solid windowtext;
+            border-bottom:none;border-left:none;background:#FCFCFF;mso-pattern:black none">0</td>
+            </tr>
+            <tr height="19" style="height:14.4pt">
+            <td height="19" class="xl7114651" style="height:14.4pt;border-left:none">playeraction</td>
+            <td class="xl7514651" align="right" style="border-left:none;border-top:none;
+            border-right:none;border-bottom:none;border-left:1.0pt solid windowtext;
+            background:#FCFCFF;mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">2</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">2</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FBFCFE;
+            mso-pattern:black none">6</td>
+            <td class="xl7614651" align="right" style="border-top:none;border-right:1.0pt solid windowtext;
+            border-bottom:none;border-left:none;background:#FBFCFE;mso-pattern:black none">5</td>
+            </tr>
+            <tr height="19" style="height:14.4pt">
+            <td height="19" class="xl7114651" style="height:14.4pt;border-left:none">playerformation</td>
+            <td class="xl7514651" align="right" style="border-left:none;border-top:none;
+            border-right:none;border-bottom:none;border-left:1.0pt solid windowtext;
+            background:#FCFCFF;mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">2</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl7614651" align="right" style="border-top:none;border-right:1.0pt solid windowtext;
+            border-bottom:none;border-left:none;background:#FCFCFF;mso-pattern:black none">0</td>
+            </tr>
+            <tr height="20" style="height:14.7pt">
+            <td height="20" class="xl7214651" style="height:14.7pt;border-left:none">ballevent</td>
+            <td class="xl7714651" align="right" style="border-left:none;border-top:none;
+            border-right:none;border-bottom:1.0pt solid windowtext;border-left:1.0pt solid windowtext;
+            background:#FCFCFF;mso-pattern:black none">2</td>
+            <td class="xl7814651" align="right" style="border-top:none;border-right:none;
+            border-bottom:1.0pt solid windowtext;border-left:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl7814651" align="right" style="border-top:none;border-right:none;
+            border-bottom:1.0pt solid windowtext;border-left:none;background:#FCFCFF;
+            mso-pattern:black none">2</td>
+            <td class="xl7814651" align="right" style="border-top:none;border-right:none;
+            border-bottom:1.0pt solid windowtext;border-left:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl7814651" align="right" style="border-top:none;border-right:none;
+            border-bottom:1.0pt solid windowtext;border-left:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl7814651" align="right" style="border-top:none;border-right:none;
+            border-bottom:1.0pt solid windowtext;border-left:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl7814651" align="right" style="border-top:none;border-right:none;
+            border-bottom:1.0pt solid windowtext;border-left:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl7914651" align="right" style="border-top:none;border-right:1.0pt solid windowtext;
+            border-bottom:1.0pt solid windowtext;border-left:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            </tr>
+            <tr height="19" style="height:14.4pt">
+            <td rowspan="10" height="192" class="xl6714651" style="border-bottom:1.0pt solid black;
+            height:144.6pt;border-top:none">TimeFolk</td>
+            <td rowspan="8" class="xl6414651" style="border-bottom:1.0pt solid black;
+            border-top:none">event</td>
+            <td class="xl7114651" style="border-left:none">kinematics</td>
+            <td class="xl7514651" align="right" style="border-left:none;border-top:none;
+            border-right:none;border-bottom:none;border-left:1.0pt solid windowtext;
+            background:#EBF5F0;mso-pattern:black none">56</td>
+            <td class="xl1514651" align="right" style="border:none;background:#F6FAF9;
+            mso-pattern:black none">22</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#F5FAF9;
+            mso-pattern:black none">23</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">2</td>
+            <td class="xl7614651" align="right" style="border-top:none;border-right:1.0pt solid windowtext;
+            border-bottom:none;border-left:none;background:#FCFCFF;mso-pattern:black none">2</td>
+            </tr>
+            <tr height="19" style="height:14.4pt">
+            <td height="19" class="xl7114651" style="height:14.4pt;border-left:none">playerdistance</td>
+            <td class="xl7514651" align="right" style="border-left:none;border-top:none;
+            border-right:none;border-bottom:none;border-left:1.0pt solid windowtext;
+            background:#FCFCFF;mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">3</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FBFCFE;
+            mso-pattern:black none">5</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl7614651" align="right" style="border-top:none;border-right:1.0pt solid windowtext;
+            border-bottom:none;border-left:none;background:#FCFCFF;mso-pattern:black none">0</td>
+            </tr>
+            <tr height="19" style="height:14.4pt">
+            <td height="19" class="xl7114651" style="height:14.4pt;border-left:none">playerarea</td>
+            <td class="xl7514651" align="right" style="border-left:none;border-top:none;
+            border-right:none;border-bottom:none;border-left:1.0pt solid windowtext;
+            background:#FCFCFF;mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#F9FBFC;
+            mso-pattern:black none">11</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl7614651" align="right" style="border-top:none;border-right:1.0pt solid windowtext;
+            border-bottom:none;border-left:none;background:#FCFCFF;mso-pattern:black none">0</td>
+            </tr>
+            <tr height="19" style="height:14.4pt">
+            <td height="19" class="xl7114651" style="height:14.4pt;border-left:none">playertext</td>
+            <td class="xl7514651" align="right" style="border-left:none;border-top:none;
+            border-right:none;border-bottom:none;border-left:1.0pt solid windowtext;
+            background:#FCFCFF;mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">2</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl7614651" align="right" style="border-top:none;border-right:1.0pt solid windowtext;
+            border-bottom:none;border-left:none;background:#FCFCFF;mso-pattern:black none">0</td>
+            </tr>
+            <tr height="19" style="height:14.4pt">
+            <td height="19" class="xl7114651" style="height:14.4pt;border-left:none">courtarea</td>
+            <td class="xl7514651" align="right" style="border-left:none;border-top:none;
+            border-right:none;border-bottom:none;border-left:1.0pt solid windowtext;
+            background:#FCFCFF;mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FBFCFE;
+            mso-pattern:black none">4</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FBFCFE;
+            mso-pattern:black none">4</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">1</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl7614651" align="right" style="border-top:none;border-right:1.0pt solid windowtext;
+            border-bottom:none;border-left:none;background:#FCFCFF;mso-pattern:black none">0</td>
+            </tr>
+            <tr height="19" style="height:14.4pt">
+            <td height="19" class="xl7114651" style="height:14.4pt;border-left:none">playeraction</td>
+            <td class="xl7514651" align="right" style="border-left:none;border-top:none;
+            border-right:none;border-bottom:none;border-left:1.0pt solid windowtext;
+            background:#FAFCFE;mso-pattern:black none">7</td>
+            <td class="xl1514651" align="right" style="border:none;background:#F9FBFC;
+            mso-pattern:black none">11</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">2</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FBFCFE;
+            mso-pattern:black none">5</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FBFCFE;
+            mso-pattern:black none">4</td>
+            <td class="xl1514651" align="right" style="border:none;background:#F0F7F4;
+            mso-pattern:black none">41</td>
+            <td class="xl7614651" align="right" style="border-top:none;border-right:1.0pt solid windowtext;
+            border-bottom:none;border-left:none;background:#FBFCFE;mso-pattern:black none">6</td>
+            </tr>
+            <tr height="19" style="height:14.4pt">
+            <td height="19" class="xl7114651" style="height:14.4pt;border-left:none">playerformation</td>
+            <td class="xl7514651" align="right" style="border-left:none;border-top:none;
+            border-right:none;border-bottom:none;border-left:1.0pt solid windowtext;
+            background:#FCFCFF;mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FBFCFE;
+            mso-pattern:black none">4</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">1</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FBFCFE;
+            mso-pattern:black none">6</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl7614651" align="right" style="border-top:none;border-right:1.0pt solid windowtext;
+            border-bottom:none;border-left:none;background:#FCFCFF;mso-pattern:black none">0</td>
+            </tr>
+            <tr height="20" style="height:14.7pt">
+            <td height="20" class="xl7214651" style="height:14.7pt;border-left:none">ballevent</td>
+            <td class="xl7714651" align="right" style="border-left:none;border-top:none;
+            border-right:none;border-bottom:1.0pt solid windowtext;border-left:1.0pt solid windowtext;
+            background:#FCFCFF;mso-pattern:black none">3</td>
+            <td class="xl7814651" align="right" style="border-top:none;border-right:none;
+            border-bottom:1.0pt solid windowtext;border-left:none;background:#FAFBFD;
+            mso-pattern:black none">8</td>
+            <td class="xl7814651" align="right" style="border-top:none;border-right:none;
+            border-bottom:1.0pt solid windowtext;border-left:none;background:#FBFCFE;
+            mso-pattern:black none">5</td>
+            <td class="xl7814651" align="right" style="border-top:none;border-right:none;
+            border-bottom:1.0pt solid windowtext;border-left:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl7814651" align="right" style="border-top:none;border-right:none;
+            border-bottom:1.0pt solid windowtext;border-left:none;background:#FCFCFF;
+            mso-pattern:black none">1</td>
+            <td class="xl7814651" align="right" style="border-top:none;border-right:none;
+            border-bottom:1.0pt solid windowtext;border-left:none;background:#FCFCFF;
+            mso-pattern:black none">2</td>
+            <td class="xl7814651" align="right" style="border-top:none;border-right:none;
+            border-bottom:1.0pt solid windowtext;border-left:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl7914651" align="right" style="border-top:none;border-right:1.0pt solid windowtext;
+            border-bottom:1.0pt solid windowtext;border-left:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            </tr>
+            <tr height="19" style="height:14.4pt">
+            <td rowspan="2" height="39" class="xl6714651" style="border-bottom:1.0pt solid black;
+            height:29.1pt;border-top:none">object</td>
+            <td class="xl7114651" style="border-left:none">kinematics</td>
+            <td class="xl7514651" align="right" style="border-left:none;border-top:none;
+            border-right:none;border-bottom:none;border-left:1.0pt solid windowtext;
+            background:#FCFCFF;mso-pattern:black none">3</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">2</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FBFCFE;
+            mso-pattern:black none">5</td>
+            <td class="xl1514651" align="right" style="border:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl7614651" align="right" style="border-top:none;border-right:1.0pt solid windowtext;
+            border-bottom:none;border-left:none;background:#FCFCFF;mso-pattern:black none">0</td>
+            </tr>
+            <tr height="20" style="height:14.7pt">
+            <td height="20" class="xl7214651" style="height:14.7pt;border-left:none">playerdistance</td>
+            <td class="xl7714651" align="right" style="border-left:none;border-top:none;
+            border-right:none;border-bottom:1.0pt solid windowtext;border-left:1.0pt solid windowtext;
+            background:#FCFCFF;mso-pattern:black none">0</td>
+            <td class="xl7814651" align="right" style="border-top:none;border-right:none;
+            border-bottom:1.0pt solid windowtext;border-left:none;background:#FCFCFF;
+            mso-pattern:black none">2</td>
+            <td class="xl7814651" align="right" style="border-top:none;border-right:none;
+            border-bottom:1.0pt solid windowtext;border-left:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl7814651" align="right" style="border-top:none;border-right:none;
+            border-bottom:1.0pt solid windowtext;border-left:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl7814651" align="right" style="border-top:none;border-right:none;
+            border-bottom:1.0pt solid windowtext;border-left:none;background:#FCFCFF;
+            mso-pattern:black none">2</td>
+            <td class="xl7814651" align="right" style="border-top:none;border-right:none;
+            border-bottom:1.0pt solid windowtext;border-left:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl7814651" align="right" style="border-top:none;border-right:none;
+            border-bottom:1.0pt solid windowtext;border-left:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            <td class="xl7914651" align="right" style="border-top:none;border-right:1.0pt solid windowtext;
+            border-bottom:1.0pt solid windowtext;border-left:none;background:#FCFCFF;
+            mso-pattern:black none">0</td>
+            </tr>
+            <!--[if supportMisalignedColumns]-->
+            <tr height="0" style="display:none">
+            <td width="98" style="width:74pt"></td>
+            <td width="67" style="width:50pt"></td>
+            <td width="135" style="width:101pt"></td>
+            <td width="67" style="width:50pt"></td>
+            <td width="67" style="width:50pt"></td>
+            <td width="67" style="width:50pt"></td>
+            <td width="67" style="width:50pt"></td>
+            <td width="67" style="width:50pt"></td>
+            <td width="67" style="width:50pt"></td>
+            <td width="67" style="width:50pt"></td>
+            <td width="67" style="width:50pt"></td>
+            </tr>
+            <!--[endif]-->
+        </tbody></table>
+            </div>
+        </div>
+        </div>
+
+    </section>
+
+    <hr />
+    <section id="section4" class="section1">
+        <h2 id="MLLibraryCode">Machine Learning Library and Code</h2>
+        <h3 id="BodyPix2">1. BodyPix2</h3>
+        <h3 id="EventRecognition">2. Event Recognition</h3>
+        <p>
+            We use spatial temporal graph ConvNet (ST-GCN)
+            <cite><a href="#stgcn">[1]</a></cite>
+             to recongize player event such as the technique a player used in one stroke.
+            <h4 id="EventRecognitionIO">2.1. Input & output</h4>
+            <p>
+                According to the pipeline porposed in ST-GCN, we first collect the table tennis video with high resolution (1080p) and frame rate (50fps). Then we use the pose estimation algorithm to retrieve the body joints from each frame, and formulate the spatial graph where the node is the joint and edge is the connection between joints of a body and joints between adjacent frames. Finally the spatial graph is used as the input for the ST-GCN.
+            </p>
+            <p>
+                The output of the ST-GCN is the standard SoftMax classifier that identifies the graph into corresponding technique category.
+            </p>
+            <h4 id="EventRecognitionInput">2.2. Training</h4>
+            <p>
+                We kept the the network structure the same as it introduced in the paper 
+                <cite><a href="#causalTool">[1]</a></cite>.
+                To gather the training data, we collected thousands of strokes from hundreds of world tournament games happened during 2016-2018. These data are manually identified from videos and formulated into structured json file. A sample file fragment is as follows:
+            </p>
+            <div class="row" style="text-align: center;
+            width: 90%;
+            margin: 0 auto 20px auto;">
+                <div class="column" align="center">
+                    <img src="figs/json1.jpg" alt="missing" style="width:75%">
+                </div>
+                <div class="column" align="center">
+                    <img src="figs/json2.jpg" alt="missing" style="width:75%">
+                </div>
+            </div>
+            <p>
+                To train the ST-GCN, we kept the number of records (video fragments) in each technique equally to make sure the scale of joints from different categories are almost the same. To this end, we first further devided the records of each technique into two categories: the player face to the screen and the player back to the screen. Then, we grouped the techniques with little records into "other" category, and simply discarded extra records to maintain consistent record numbers for each category. Finally, we got seven techniques (i.e. topspin, reverse, push, short, pendulum, attack, others), 14 categories with 4375 records each. 
+            </p>
+        </p>
+        
+        <h3 id="Causality">3. Causality</h3>
+        <p>
+            We use FGES (Fast Greedy Equivalence Search)
+            <cite><a href="#FGES">[2]</a></cite>
+             to extract the recommended data that used for future purpose.
+            The toolkit can be found in <cite><a href="#causalTool">[3]</a></cite>.
+        </p>
+        <h4 id="CasualInput">3.1. Input</h4>
+        <p>
+            To generate a causal graph, we group the table tennis data into a table, where each row represents a rally and each column represents a technique. Each cell records the frequency of corresponding technique used in that rally.
+        </p>
+        <h5 align="center">Input Table Sample</h5>
+        <table id="CasualInputTable" style="width:50%;">
+            <thead>
+                <tr>
+                    <th>Topspin</th>
+                    <th>Reverse</th>
+                    <th>Push</th>
+                    <th>Pendulum</th>
+                    <th>Flick</th>
+                    <th>Lob</th>
+                    <th>Twist</th>
+                    <th>Block</th>
+                    <th>Short</th>
+                    <th>Others</th>
+                    <th>Attack</th>
+                    <th>Smash</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>2</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>1</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>1</td>
+                    <td>0</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>1</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>2</td>
+                    <td>1</td>
+                    <td>0</td>
+                    <td>1</td>
+                    <td>0</td>
+                </tr>
+                <tr>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>2</td>
+                    <td>1</td>
+                    <td>0</td>
+                    <td>1</td>
+                    <td>0</td>
+                </tr>
+                <tr>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>2</td>
+                    <td>1</td>
+                    <td>0</td>
+                    <td>1</td>
+                    <td>0</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>1</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>1</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>2</td>
+                    <td>1</td>
+                </tr>
+                <tr>
+                    <td colspan=12>…</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h4 id="CasualOutput">3.2. Output</h4>
+        <figure style="text-align: center;
+        width: 60%;
+        margin: 0 auto 20px auto;">
+            <img src="figs/CasualOutput.svg" alt='missing' />
+        </figure>
+    </section>
 
       <hr />
       <section id="paper" class="paper">
@@ -125,7 +1624,16 @@
 
       <hr />
       <section id="references" class="references">
-        <h2 style="text-align: left">Reference</h2>
+          <h2 style="text-align:left;">References</h2>
+          <p id="stgcn">
+              [1] Yan S, Xiong Y, Lin D. Spatial temporal graph convolutional networks for skeleton-based action recognition[J]. arXiv preprint arXiv:1801.07455, 2018.
+          </p>
+          <p id="FGES">
+              [2] Fast Greedy Equivalence Search (FGES) Algorithm for Discrete Variables. Available at: https://www.ccd.pitt.edu/wiki/index.php/Fast_Greedy_Equivalence_Search_(FGES)_Algorithm_for_Discrete_Variables (Accessed: 10 September 2020)
+          </p>
+          <p id="casualTool">
+              [3] py-causal. Available at: https://github.com/bd2kccd/py-causal (Accessed: 10 September 2020)
+          </p>
       </section>
     </div>
 
