@@ -33,9 +33,9 @@
         <h1>Augmenting Sports Videos with VisCommentator</h1>
         <div class="jump-btn-group">
           <a href="#examples" class="jump-btn">Examples</a>
-          <a href="#section2" class="jump-btn">section2</a>
-          <a href="#section3" class="jump-btn">section3</a>
-          <a href="#section4" class="jump-btn">section4</a>
+          <a href="#corpus" class="jump-btn">Corpus</a>
+          <a href="#design_space" class="jump-btn">Design Sapce</a>
+          <a href="#ml" class="jump-btn">Models</a>
           <a href="#paper" class="jump-btn">Paper</a>
         </div>
       </div>
@@ -80,7 +80,7 @@
     </section>
 
     <hr />
-    <section id="section2" class="section1">
+    <section id="corpus" class="corpus">
         <h2>Corpus</h2>
         <div class="filter-selector-group">
           <select
@@ -106,7 +106,7 @@
     </section>
 
     <hr />
-    <section id="section3" class="section1">
+    <section id="design_space" class="design_space">
         <h2>Design Space</h2>
         <figure style="text-align: center;
         width: 90%;
@@ -1455,9 +1455,33 @@
     </section>
 
     <hr />
-    <section id="section4" class="section1">
+    <section id="ml" class="ml">
         <h2 id="MLLibraryCode">Machine Learning Library and Code</h2>
         <h3 id="BodyPix2">1. BodyPix2</h3>
+        <p>
+          We use <a href="https://github.com/tensorflow/tfjs-models/tree/master/body-pix" >BodyPix2</a> from google to detect and segment players from a video. BodyPix2 is devloped based on Tensorflow.js and can be ran in NodeJs environments. The hyper-parameters we used are:
+          <pre>
+<code class="json">// for bodyPix.load
+{
+    "architecture": "ResNet50",
+    "outputStride": 16,
+    "quantBytes": 4
+}
+</code><code> // for net.segmentPerson
+{
+    "flipHorizontal": false,
+    "internalResolution": "full",
+    "segmentationThreshold": 0.7,
+    "maxDetections": 10,
+    "scoreThreshold": 0.2,
+    "nmsRadius": 20,
+    "minKeypointScore": 0.3,
+    "refineSteps": 10
+}</code>
+          </pre>
+        </p>
+
+
         <h3 id="EventRecognition">2. Event Recognition</h3>
         <p>
             We use spatial temporal graph ConvNet (ST-GCN)
@@ -1476,15 +1500,13 @@
                 <cite><a href="#causalTool">[1]</a></cite>.
                 To gather the training data, we collected thousands of strokes from hundreds of world tournament games happened during 2016-2018. These data are manually identified from videos and formulated into structured json file. A sample file fragment is as follows:
             </p>
-            <div class="row" style="text-align: center;
-            width: 90%;
-            margin: 0 auto 20px auto;">
-                <div class="column" align="center">
-                    <img src="figs/json1.jpg" alt="missing" style="width:75%">
-                </div>
-                <div class="column" align="center">
-                    <img src="figs/json2.jpg" alt="missing" style="width:75%">
-                </div>
+            <div class="row" style="display: flex;justify-content: space-around;">
+              <div style="width: 30%;">
+                <img src="figs/json1.jpg" alt="missing">
+              </div>
+              <div style="width: 30%;">
+                <img src="figs/json2.jpg" alt="missing">
+              </div>
             </div>
             <p>
                 To train the ST-GCN, we kept the number of records (video fragments) in each technique equally to make sure the scale of joints from different categories are almost the same. To this end, we first further devided the records of each technique into two categories: the player face to the screen and the player back to the screen. Then, we grouped the techniques with little records into "other" category, and simply discarded extra records to maintain consistent record numbers for each category. Finally, we got seven techniques (i.e. topspin, reverse, push, short, pendulum, attack, others), 14 categories with 4375 records each. 
@@ -1605,26 +1627,25 @@
         </figure>
     </section>
 
-      <hr />
+      <!-- <hr />
       <section id="paper" class="paper">
         <h2>Paper</h2>
         <div class="gallary"></div>
-      </section>
+      </section> -->
 
-      <hr />
-      <section id="references" class="references">
-          <h2 style="text-align:left;">References</h2>
-          <p id="stgcn">
-              [1] Yan S, Xiong Y, Lin D. Spatial temporal graph convolutional networks for skeleton-based action recognition[J]. arXiv preprint arXiv:1801.07455, 2018.
-          </p>
-          <p id="FGES">
-              [2] Fast Greedy Equivalence Search (FGES) Algorithm for Discrete Variables. Available at: https://www.ccd.pitt.edu/wiki/index.php/Fast_Greedy_Equivalence_Search_(FGES)_Algorithm_for_Discrete_Variables (Accessed: 10 September 2020)
-          </p>
-          <p id="casualTool">
-              [3] py-causal. Available at: https://github.com/bd2kccd/py-causal (Accessed: 10 September 2020)
-          </p>
-      </section>
-    </div>
+    <hr />
+    <section id="references" class="references">
+        <h2 style="text-align:left;">References</h2>
+        <p id="stgcn">
+            [1] Yan S, Xiong Y, Lin D. Spatial temporal graph convolutional networks for skeleton-based action recognition[J]. arXiv preprint arXiv:1801.07455, 2018.
+        </p>
+        <p id="FGES">
+            [2] Fast Greedy Equivalence Search (FGES) Algorithm for Discrete Variables. Available at: https://www.ccd.pitt.edu/wiki/index.php/Fast_Greedy_Equivalence_Search_(FGES)_Algorithm_for_Discrete_Variables (Accessed: 10 September 2020)
+        </p>
+        <p id="casualTool">
+            [3] py-causal. Available at: https://github.com/bd2kccd/py-causal (Accessed: 10 September 2020)
+        </p>
+    </section>
 
     <script>
       function insertExampleImage() {
@@ -1776,7 +1797,7 @@
                     <div class="item-content">
                     <a data-fancybox="gallery" href="http://vegaar.hkustvis.org/videos/${selectedVideo[i].name}">
                     <video src="http://vegaar.hkustvis.org/videos/${selectedVideo[i].name}" alt='missing' />
-                     </a>
+                      </a>
                     </div>
                 </div>
                 `
@@ -1823,7 +1844,7 @@
                     <div class="item-content">
                     <a data-fancybox="gallery" href="http://vegaar.hkustvis.org/videos/${selectedVideo[i].name}">
                     <video src="http://vegaar.hkustvis.org/videos/${selectedVideo[i].name}" alt='missing' />
-                     </a>
+                      </a>
                     </div>
                 </div>
                 `
@@ -1845,6 +1866,8 @@
         if (currentPage === 1) $("#last_page").attr("disabled", true);
         if (currentPage === pageNumber) $("#next_page").attr("disabled", true);
       }
+
+      hljs.initHighlightingOnLoad()
     </script>
   </body>
 </html>

@@ -41,14 +41,14 @@ video {
     left: 0;
     right: 0;
     background-color: #2c3e50;
-    opacity: 0.5;
+    opacity: 0.6;
 }
 
 .teaser .teaser-content {
     position: absolute;
-    bottom: 30%;
-    /* left: 50%;
-    transform: translate(-50%, -50%); */
+    bottom: 10%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -260,14 +260,14 @@ tr:nth-child(even) {
     background-color: #dddddd;
 }
 
-.training pre {
+.ml pre {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
 }
 
-.training pre code {
-    width: 48%;
-    font-size: 0.8em;
+.ml pre code {
+    width: 30%;
+    font-size: 1em;
 }
 
 .list_losses {
