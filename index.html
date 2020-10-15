@@ -1802,7 +1802,7 @@
                 <div class="item">
                     <div class="item-content">
                       <a href="${selectedVideo[i].url}" target="_blank">
-                        <video src="${selectedVideo[i].url}" alt='missing' />
+                        <img src="figs/videoFrame/${selectedVideo[i].name}.jpg" alt='missing' />
                       </a>
                     </div>
                 </div>
@@ -1845,11 +1845,11 @@
         for (let i = (currentPage - 1) * pageSize; i < maxNumber; i++) {
           section.insertAdjacentHTML(
             "beforeend",
-            `
+              `
                 <div class="item">
                     <div class="item-content">
                       <a href="${selectedVideo[i].url}" target="_blank">
-                          <video src="${selectedVideo[i].url}" alt='missing' />
+                        <img src="figs/videoFrame/${selectedVideo[i].name}.jpg" alt='missing' />
                       </a>
                     </div>
                 </div>
