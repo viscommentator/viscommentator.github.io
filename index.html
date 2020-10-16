@@ -1785,6 +1785,8 @@
           $("#examples_good").css("display", "none");
           $("#empty_tip").css("display", "block");
         } else {
+            selectedVideo = shuffle(selectedVideo, selectedVideo.length)
+
           $("#examples_good").css("display", "");
           $("#empty_tip").css("display", "none");
           const section = document.querySelector("#examples_good");
@@ -1871,6 +1873,22 @@
 
         if (currentPage === 1) $("#last_page").attr("disabled", true);
         if (currentPage === pageNumber) $("#next_page").attr("disabled", true);
+      }
+
+      function shuffle(array, size) {
+          let index = -1,
+              length = array.length,
+              lastIndex = length - 1;
+          size = size === undefined ? length : size;
+          while (++index < size) {
+              // var rand = baseRandom(index, lastIndex),
+              let rand = index + Math.floor( Math.random() * (lastIndex - index + 1))
+              value = array[rand];
+              array[rand] = array[index];
+              array[index] = value;
+          }
+          array.length = size;
+          return array;
       }
 
       hljs.initHighlightingOnLoad()
