@@ -36,7 +36,7 @@
           <a href="#corpus" class="jump-btn">Corpus</a>
           <a href="#design_space" class="jump-btn">Design Sapce</a>
           <a href="#ml" class="jump-btn">Models</a>
-          <a href="#paper" class="jump-btn">Paper</a>
+          <a href="eg13.pdf" class="jump-btn" target="_blank">Paper</a>
         </div>
       </div>
     </div>
@@ -127,10 +127,9 @@
 
         <h1 style="color:black;font-family:Calibri;font-size:14.0pt;font-weight:800;
         font-style:normal">Design Space Large</h1>
-        <div id="table-wrapper" style="width:636pt">
+        <div id="table-wrapper">
             <div id="table-scroll">
-        <table id="DesignSpaceLarge" border="0" cellpadding="0" cellspacing="0" width="836" style="border-collapse:
-            collapse;table-layout:fixed;width:625pt">
+        <table id="DesignSpaceLarge" border="0" cellpadding="0" cellspacing="0" width="836" style="border-collapse:collapse;table-layout:fixed;">
             <colgroup><col width="98" style="mso-width-source:userset;mso-width-alt:3301;width:74pt">
             <col width="67" style="width:50pt">
             <col width="135" style="mso-width-source:userset;mso-width-alt:4554;width:101pt">
@@ -1654,25 +1653,51 @@
 
     <script>
       function insertExampleImage() {
+        const meta = [
+          { original: "Ovtcharov vs Lin in 2019 ITTF World Tour Grand Finals",
+            0: 'Physical Level Data + Linear',
+            1: 'Tactical Level Data + Timefork',
+            2: 'Tactical Level Data + FlashForward'
+          },
+          { original: "Boll vs Ma in 2019 ITTF World Tour",
+            0: 'Physical Level Data + Linear',
+            1: 'Event Level Data + FlashForward',
+            2: 'Tactical Level Data + FlashForward'
+          },
+        ]
         const section = document.querySelector("#examples > #examples_demo");
-        for (let i = 1; i < 7; ++i) {
-          section.insertAdjacentHTML("beforeend",`
+        const getVideo = (id, caption) => `
             <div class="item item-3">
                 <div class="item-content">
-                <a data-fancybox="gallery" href="#demo_${i}">
-                    <img src="figs/demo${i}.png" alt='missing' />
+                <a data-fancybox="gallery" href="#${id}">
+                    <img src="figs/${id}.png" alt='missing' />
                     <i class="fa fa-play-circle"></i>
                 </a>
+                ${caption? `<span>${caption}</span>` : ''}
                 </div>
             </div>
             <video
                 width="1280"
                 height="640"
                 controls
-                id="demo_${i}"
+                id="${id}"
                 style="display: none"
-                src="./videos/demo${i}.mp4"
-            ></video>`);
+                src="./videos/${id}.mp4"
+            ></video>`
+
+        for(let i  = 1; i < 3; ++i) {
+          section.insertAdjacentHTML('beforeend',  `
+            <div class="case">
+              <h5>Original#${i}: ${meta[i-1].original}</h5>
+              <div class="original">
+              ${getVideo(`o${i}`)}
+              </div>
+              <h5>Augmentations#${i}:</h5>
+              <div class="augmentation">
+              ${Array(3).fill(0).map((_, ii) => getVideo(`demo${ii + 1 + (i-1) * 3}`, meta[i-1][ii])).join('')}
+              </div>
+            </div>
+          `)
         }
       }
       insertExampleImage();
