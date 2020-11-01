@@ -1662,12 +1662,13 @@
           { original: "Boll vs Ma in 2019 ITTF World Tour",
             0: 'Physical Level Data + Linear',
             1: 'Event Level Data + FlashForward',
-            2: 'Tactical Level Data + FlashForward'
+            2: 'Tactical Level Data + FlashForward',
+            3: 'Tactical Level Data + ZigZag (w/ a rendering bug)'
           },
         ]
         const section = document.querySelector("#examples > #examples_demo");
         const getVideo = (id, caption) => `
-            <div class="item item-3">
+            <div class="item item-4">
                 <div class="item-content">
                 <a data-fancybox="gallery" href="#${id}">
                     <img src="figs/${id}.png" alt='missing' />
@@ -1694,7 +1695,7 @@
               </div>
               <h5>Augmentations#${i}:</h5>
               <div class="augmentation">
-              ${Array(3).fill(0).map((_, ii) => getVideo(`demo${ii + 1 + (i-1) * 3}`, meta[i-1][ii])).join('')}
+              ${Array(4).fill(0).filter((_,  ii) => i !== 1 || ii !== 3).map((_, ii) => getVideo(`demo${ii + 1 + (i-1) * 3}`, meta[i-1][ii])).join('')}
               </div>
             </div>
           `)
