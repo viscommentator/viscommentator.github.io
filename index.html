@@ -125,8 +125,7 @@
         
         <div align="center">
 
-        <h1 style="color:black;font-family:Calibri;font-size:14.0pt;font-weight:800;
-        font-style:normal">Design Space Large</h1>
+        <figurecaption>Table 1. An element-level design space for augmented sports videos. We use the combanation frequency to support the visualizations recommendation in the system.</figurecaption>
         <div id="table-wrapper">
             <div id="table-scroll">
         <table id="DesignSpaceLarge" border="0" cellpadding="0" cellspacing="0" width="836" style="border-collapse:collapse;table-layout:fixed;">
@@ -1689,11 +1688,11 @@
         for(let i  = 1; i < 3; ++i) {
           section.insertAdjacentHTML('beforeend',  `
             <div class="case">
-              <h5>Original#${i}: ${meta[i-1].original}</h5>
+              <h4>Demo${i+1}: original version, ${meta[i-1].original}</h4>
               <div class="original">
               ${getVideo(`o${i}`)}
               </div>
-              <h5>Augmentations#${i}:</h5>
+              <h4>Augmentations for demo${i+1}:</h4>
               <div class="augmentation">
               ${Array(4).fill(0).filter((_,  ii) => i !== 1 || ii !== 3).map((_, ii) => getVideo(`demo${ii + 1 + (i-1) * 3}`, meta[i-1][ii])).join('')}
               </div>

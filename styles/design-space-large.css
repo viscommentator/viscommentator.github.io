@@ -439,12 +439,11 @@
 #table-scroll {
   height: 300px;
   overflow: auto;
-  margin-top: 20px;
 }
 
 #table-wrapper table {
   width: 100%;
-
+  margin-top: 0;
 }
 
 #table-wrapper table thead th .text {
