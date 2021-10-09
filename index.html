@@ -122,7 +122,7 @@
             </figurecaption>
         </figure>
         <br>
-        
+
         <div align="center">
 
         <figurecaption>Table 1. An element-level design space for augmented sports videos. We use the combanation frequency to support the visualizations recommendation in the system.</figurecaption>
@@ -1499,7 +1499,7 @@
             </p>
             <h4 id="EventRecognitionInput">2.2. Training</h4>
             <p>
-                We kept the the network structure the same as it introduced in the paper 
+                We kept the the network structure the same as it introduced in the paper
                 <cite><a href="#causalTool">[1]</a></cite>.
                 To gather the training data, we collected thousands of strokes from hundreds of world tournament games happened during 2016-2018. These data are manually identified from videos and formulated into structured json file. A sample file fragment is as follows:
             </p>
@@ -1512,10 +1512,10 @@
               </div>
             </div>
             <p>
-                To train the ST-GCN, we kept the number of records (video fragments) in each technique equally to make sure the scale of joints from different categories are almost the same. To this end, we first further devided the records of each technique into two categories: the player face to the screen and the player back to the screen. Then, we grouped the techniques with little records into "other" category, and simply discarded extra records to maintain consistent record numbers for each category. Finally, we got seven techniques (i.e. topspin, reverse, push, short, pendulum, attack, others), 14 categories with 4375 records each. 
+                To train the ST-GCN, we kept the number of records (video fragments) in each technique equally to make sure the scale of joints from different categories are almost the same. To this end, we first further devided the records of each technique into two categories: the player face to the screen and the player back to the screen. Then, we grouped the techniques with little records into "other" category, and simply discarded extra records to maintain consistent record numbers for each category. Finally, we got seven techniques (i.e. topspin, reverse, push, short, pendulum, attack, others), 14 categories with 4375 records each.
             </p>
         </p>
-        
+
         <h3 id="Causality">3. Causality</h3>
         <p>
             We use FGES (Fast Greedy Equivalence Search)
@@ -1831,7 +1831,7 @@
               `
                 <div class="item">
                     <div class="item-content">
-                      <a href="${selectedVideo[i].url}" target="_blank">
+                      <a href="${'videos/corpus/'+selectedVideo[i].name}" target="_blank">
                         <img src="figs/videoFrame/${selectedVideo[i].name}.jpg" alt='missing' />
                       </a>
                     </div>
@@ -1878,7 +1878,7 @@
               `
                 <div class="item">
                     <div class="item-content">
-                      <a href="${selectedVideo[i].url}" target="_blank">
+                      <a href="${'videos/corpus/'+selectedVideo[i].name}" target="_blank">
                         <img src="figs/videoFrame/${selectedVideo[i].name}.jpg" alt='missing' />
                       </a>
                     </div>
