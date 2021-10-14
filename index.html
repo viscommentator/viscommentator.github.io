@@ -36,7 +36,7 @@
           <a href="#corpus" class="jump-btn">Corpus</a>
           <a href="#design_space" class="jump-btn">Design Sapce</a>
           <a href="#ml" class="jump-btn">Models</a>
-          <a href="eg13.pdf" class="jump-btn" target="_blank">Paper</a>
+          <a href="https://chenzhutian.org/projects/2021_viscommentator/paper.pdf" class="jump-btn" target="_blank">Paper</a>
         </div>
       </div>
     </div>
@@ -1829,13 +1829,21 @@
             section.insertAdjacentHTML(
               "beforeend",
               `
-                <div class="item">
+                <div class="item item-4">
                     <div class="item-content">
-                      <a href="${'videos/corpus/'+selectedVideo[i].name}" target="_blank">
-                        <img src="figs/videoFrame/${selectedVideo[i].name}.jpg" alt='missing' />
-                      </a>
+                        <a data-fancybox="gallery" href="#${'corpus'+i}">
+                            <img src="figs/videoFrame/${selectedVideo[i].name}.jpg" alt='missing' />
+                            <i class="fa fa-play-circle"></i>
+                        </a>
                     </div>
                 </div>
+                <video
+                    width="1280"
+                    height="640"
+                    controls
+                    id="${'corpus'+i}"
+                    style="display: none"
+                    src="./videos/corpus/${selectedVideo[i].name}"></video>
                 `
             );
           }
@@ -1876,13 +1884,21 @@
           section.insertAdjacentHTML(
             "beforeend",
               `
-                <div class="item">
+                <div class="item item-4">
                     <div class="item-content">
-                      <a href="${'videos/corpus/'+selectedVideo[i].name}" target="_blank">
-                        <img src="figs/videoFrame/${selectedVideo[i].name}.jpg" alt='missing' />
-                      </a>
+                        <a data-fancybox="gallery" href="#${'corpus'+i}">
+                            <img src="figs/videoFrame/${selectedVideo[i].name}.jpg" alt='missing' />
+                            <i class="fa fa-play-circle"></i>
+                        </a>
                     </div>
                 </div>
+                <video
+                width="1280"
+                height="640"
+                controls
+                id="${'corpus'+i}"
+                style="display: none"
+                src="./videos/corpus/${selectedVideo[i].name}"></video>
                 `
           );
         }
